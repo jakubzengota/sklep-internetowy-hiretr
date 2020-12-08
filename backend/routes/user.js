@@ -116,10 +116,11 @@
 // export default router;
 
 import { Router } from "express";
-import { signUp } from "../controllers/user";
+import { signIn, signUp } from "../controllers/user";
 
 const router = Router({ mergeParams: true });
 
+router.post("/signin", signIn);
 router.post("/signup", signUp);
 
 export default router;

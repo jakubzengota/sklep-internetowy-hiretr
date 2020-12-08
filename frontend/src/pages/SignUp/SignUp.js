@@ -260,6 +260,17 @@ function SignUp() {
                     >
                         Sign Up
                     </LoadingButton>
+                    <Grid container justify="flex-end">
+                        <Grid item>
+                            <Link
+                                component={NavLink}
+                                to="/signin"
+                                variant="body2"
+                            >
+                                Already have an account? Sign in
+                            </Link>
+                        </Grid>
+                    </Grid>
                 </form>
             </div>
         </Container>
