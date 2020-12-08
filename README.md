@@ -1,1 +1,1 @@
-# sklep-internetowy-hiretr
+# projekt-nzi-sklepik

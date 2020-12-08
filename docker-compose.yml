@@ -2,12 +2,14 @@
 version: "3.7"
 
 services:
-    db:
+    postgres:
         image: postgres:13.0
         restart: always
         volumes:
             - ./init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
             - ./my-postgres.conf:/etc/postgresql/postgresql.conf
+        ports:
+            - 5432:5432
         environment:
             - POSTGRES_PASSWORD
             - POSTGRES_USER
@@ -20,6 +22,9 @@ services:
     frontend:
         build: ./frontend
         container_name: frontend
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules
         ports:
             - $FRONTEND_PORT:$FRONTEND_PORT
         environment:
@@ -29,8 +34,9 @@ services:
         container_name: backend
         ports:
             - $BACKEND_PORT:$BACKEND_PORT
-        command: nodemon --exec babel-node app.js
         volumes:
-            - ./backend:/usr/src/app
+            - ./backend:/app
+            - /app/node_modules
+        command: nodemon --exec babel-node app.js
         environment:
             - PORT=$BACKEND_PORT
