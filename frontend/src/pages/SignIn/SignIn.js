@@ -122,7 +122,7 @@ function SignIn() {
                 <Avatar
                     style={{
                         margin: 8,
-                        backgroundColor: "blue",
+                        backgroundColor: "#d2c1c9",
                     }}
                 >
                     <LockOutlinedIcon />
@@ -184,13 +184,13 @@ function SignIn() {
                         fullWidth
                         variant="contained"
                         color="primary"
-                        style={{ margin: "24px 0px 16px" }}
+                        style={{ margin: "24px 0px 16px", backgroundColor: '#d2c1c9'}}
                     >
                         Sign In
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link href="#" variant="body2" style={{color: '#9f6667'}}>
                                 Forgot password?
                             </Link>
                         </Grid>
@@ -199,6 +199,7 @@ function SignIn() {
                                 component={NavLink}
                                 to="/signup"
                                 variant="body2"
+                                style={{color: '#9f6667'}}
                             >
                                 {"Don't have an account? Sign Up"}
                             </Link>

@@ -1,6 +1,5 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
@@ -112,7 +111,7 @@ function SignUp() {
                 <Avatar
                     style={{
                         margin: 8,
-                        backgroundColor: "blue",
+                        backgroundColor: "#d2c1c9",
                     }}
                 >
                     <LockOutlinedIcon />
@@ -255,7 +254,7 @@ function SignUp() {
                         variant="contained"
                         color="primary"
                         style={{
-                            margin: "24px 0px 16px",
+                            margin: "24px 0px 16px", backgroundColor: '#d2c1c9'
                         }}
                     >
                         Sign Up
@@ -266,6 +265,7 @@ function SignUp() {
                                 component={NavLink}
                                 to="/signin"
                                 variant="body2"
+                                style={{color: '#9f6667'}}
                             >
                                 Already have an account? Sign in
                             </Link>

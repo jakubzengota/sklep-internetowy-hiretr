@@ -1,67 +1,55 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import { Link as NavLink } from "react-router-dom";
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import { Link } from "react-router-dom";
+import './AppBar.css'
 
-const useStyles = makeStyles((theme) => ({
-    title: {
-        flexGrow: 1,
-    },
-    buttons: {
-        "& > *": {
-            margin: theme.spacing(1),
-        },
-    },
-}));
-
-export default function MenuAppBar() {
-    const classes = useStyles();
+export default function DenseAppBar() {
     const authenticated = false;
 
-    return (
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                    Sklepik
-                </Typography>
-                {authenticated && (
-                    <div>
-                        <IconButton
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-                    </div>
-                )}
-                {!authenticated && (
-                    <div className={classes.buttons}>
-                        <Button
-                            color="inherit"
-                            component={NavLink}
-                            to="/signup"
-                        >
-                            sign up
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            color="inherit"
-                            startIcon={<AccountCircle />}
-                            component={NavLink}
-                            to="/signin"
-                        >
-                            sign in
-                        </Button>
-                    </div>
-                )}
-            </Toolbar>
-        </AppBar>
-    );
+  return (
+    <div styles={{flexGrow: 1}}>
+      <AppBar position="static" style={{height: "35px", alignItems: 'center', backgroundColor: '#d2c1c9'}}>
+        <Toolbar variant="dense">
+          <Typography style={{fontSize: '15px', fontFamily: 'Cinzel', fontWeight: 800}}>
+            FREE SHIPPING | FREE RETURNS
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+     {!authenticated && (
+          <Grid
+          container
+          direction="row-reverse"
+          justify="flex-start"
+          alignItems="baseline"
+          style={{fontSize: '20px', fontFamily: 'Cinzel', fontWeight: 800, paddingTop: '10px'}}
+          >
+              <Link style={{paddingRight: '15px', textDecoration: 'none'}} to="/signup">Sign Up</Link>
+              <Link style={{paddingRight: '10px', textDecoration: 'none'}} to="/signin">Sign In</Link>
+          </Grid>
+     )}
+      <Grid
+      container
+      direction="column"
+      justify="space-between"
+      alignItems="center"
+      style={{paddingTop:'15px'}}
+      >
+      <img src='https://i.imgur.com/cVrvjAS.png' alt="logo" style={{width: '150px'}}></img>
+      </Grid>
+      <Grid
+     container
+     direction="column"
+     justify="space-between"
+     alignItems="center"
+      style={{fontSize:'20px', fontFamily: 'Cinzel', fontWeight: 800, paddingBottom: '10px'}}
+      >
+      <Link style={{textDecoration: 'none'}} to="/catalog">All Products</Link>
+      </Grid>
+      </div>
+
+  );
 }
