@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import userRouter from "./routes/user";
 import emailRouter from "./routes/email";
+import productRouter from "./routes/product"
 import models, { sequalize } from "./models";
 import passport from "./passport";
 
@@ -16,23 +17,13 @@ app.get("/test", passport.authenticate("jwt", { session: false }), (req, res) =>
 
 app.use("/users", userRouter);
 app.use("/email", emailRouter);
+app.use("/products", productRouter);
 
-const eraseDatabaseOnSync = true;
+
 const port = process.env.PORT;
-sequalize.sync({ force: eraseDatabaseOnSync }).then(() => {
+sequalize.sync().then(() => {
     console.log("connected to database");
-    if (eraseDatabaseOnSync) {
-        craeteUser();
-    }
     app.listen(port, () => {
         console.log(`app is listening on port: ${port}`);
     });
 });
-
-const craeteUser = async () => {
-    const user = models.User.build({
-        email: "jeremiwielewski@wp.pl",
-        password: "jeremi",
-    });
-    await user.save();
-};

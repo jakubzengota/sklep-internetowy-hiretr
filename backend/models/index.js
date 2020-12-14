@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 
 import User from "./user";
+import Product from "./product"
 
 export const sequalize = new Sequelize("docker", "docker", "docker", {
     dialect: "postgres",
@@ -9,6 +10,7 @@ export const sequalize = new Sequelize("docker", "docker", "docker", {
 
 const models = {
     User,
+    Product,
 };
 
 Object.keys(models).map((key) => {
@@ -16,4 +18,3 @@ Object.keys(models).map((key) => {
 });
 
 export default models;
-//tescik
