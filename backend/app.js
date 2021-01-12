@@ -7,6 +7,7 @@ import productRouter from "./routes/product"
 import models, { sequalize } from "./models";
 import passport from "./passport";
 
+//
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());

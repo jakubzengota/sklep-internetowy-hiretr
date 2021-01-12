@@ -14,6 +14,7 @@ const isValidUser = (request) => {
         const password = request.body.password || "";
         const firstName = request.body.firstName || "";
         const lastName = request.body.lastName || "";
+        
         if (email && password && firstName && lastName) {
             return true;
         }
