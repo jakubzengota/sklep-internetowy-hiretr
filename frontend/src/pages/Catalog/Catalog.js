@@ -1,6 +1,6 @@
 import React from "react";
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Catalog() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
@@ -76,7 +76,6 @@ function Catalog() {
       </React.Fragment>
     );
   }
-
 
     return (
         <React.Fragment>
