@@ -13,7 +13,6 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         height: '300px'
       },
   }));
-  
+
 function Catalog() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -77,6 +76,7 @@ function Catalog() {
       </React.Fragment>
     );
   }
+
 
     return (
         <React.Fragment>
