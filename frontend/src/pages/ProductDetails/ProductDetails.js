@@ -12,12 +12,13 @@ import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { useParams } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
     paperRoot: {
-        width: "600px",        
-        height: "800px",
+        width: "100%",        
+        height: "100%",
     },
     root: {
         fontSize: "30px",
@@ -34,6 +35,22 @@ const options = [
 ];
 
 function ProductDetails() {
+    const {id} = useParams()
+    const [state, setState] = React.useState({
+        name: "",
+        price: "",
+    });
+
+
+    React.useEffect(async () => {
+        const response = await fetch(`http://localhost:4000/products/${id}`);
+        const json = await response.json();
+        setState({
+            name: json.product.name,
+            price: json.product.product_cost
+        });
+    }, []);
+
     const classes = useStyles();
     
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -85,7 +102,7 @@ function ProductDetails() {
                                 marginBottom: "40px",
                             }}
                         >   
-                        Item name
+                        {state.name}
                         </Typography>                     
                         <Typography
                             style={{
@@ -95,19 +112,8 @@ function ProductDetails() {
                                 marginBottom: "25px",
                             }}
                         >   
-                        Price
-                        </Typography>                        
-                        <Typography
-                            style={{
-                                color: "black",
-                                fontFamily: "Cinzel",
-                                fontWeight: 800,
-                                fontSize: "15px",
-                                marginBottom: "30px",
-                            }}
-                        >   
-                        Description
-                        </Typography>   
+                        {state.price}
+                        </Typography>                          
                         
                         <div className={classes.root}>
                             <List component="nav" aria-label="Size options">
@@ -143,7 +149,7 @@ function ProductDetails() {
                         <FormControl className={classes.margin}>
                             <TextField id="outlined-basic" label="Type in amount" variant="outlined" />
                         </FormControl>
-                        <br></br>
+                        <br></br><br></br>
                         <div>
                             <Button variant="outlined" color="primary">
                                 Add to Cart
