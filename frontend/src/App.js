@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import EmailVerification from "./pages/EmailVerification";
 import Catalog from "./pages/Catalog";
+import ProductDetails from "./pages/ProductDetails";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,7 +37,10 @@ function App() {
                 </Route>
                 <Route exact path="/catalog">
                     <Catalog />
-                </Route>
+                </Route>                
+                <Route path="/catalog/:id">
+                    <ProductDetails />
+                </Route>                       
             </Switch>
         </div>
     );

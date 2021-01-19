@@ -1,12 +1,13 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import { Link }  from "react-router-dom";
+import Button from '@material-ui/core/Button';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
-import { makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Popper from "@material-ui/core/Popper";
@@ -33,12 +34,12 @@ function Catalog() {
         open: false,
         products: [],
     });
-    const anchorRef = React.useRef(null);
+
 
     const handleToggle = () => {
         setState({
             ...state,
-            open: !state.state.open,
+            open: !state.open,
         });
     };
     const handleClose = (event) => {
@@ -60,10 +61,18 @@ function Catalog() {
             });
         }
     }
-    function ProductCard({ name, price }) {
+
+    const anchorRef = React.useRef(null);
+    function ProductCard({ name, price, id }) {
         return (
             <Grid item xs={4}>
-                <Paper className={classes.paper2}>{`${name} ${price}`}</Paper>
+                <Paper className={classes.paper2}>
+                    {`${name} ${price}`} 
+                    <br></br>
+                <Link to={"/catalog/" + `${id}`}  style={{textDecoration: "none"}}> 
+                <Button variant="outlined">Details</Button>
+                 </Link>
+                </Paper>
             </Grid>
         );
     }
@@ -99,7 +108,7 @@ function Catalog() {
             >
                 <br></br>
                 <div className={classes.root}>
-                    <AppBar
+                <AppBar
                         position="static"
                         style={{ backgroundColor: "white", height: "40px" }}
                     >
@@ -112,7 +121,7 @@ function Catalog() {
                                     fontWeight: 800,
                                 }}
                             >
-                                Filter By
+                                Sort by
                                 <ExpandMoreIcon
                                     ref={anchorRef}
                                     aria-controls={
@@ -173,33 +182,12 @@ function Catalog() {
                                     </Grow>
                                 )}
                             </Popper>
-                            <Typography
-                                style={{
-                                    color: "black",
-                                    fontSize: "15px",
-                                    fontFamily: "Cinzel",
-                                    fontWeight: 800,
-                                    paddingLeft: "40px",
-                                }}
-                            >
-                                Sort By
-                                <ExpandMoreIcon></ExpandMoreIcon>
-                            </Typography>
-                            <Typography
-                                style={{
-                                    color: "black",
-                                    fontSize: "15px",
-                                    fontFamily: "Cinzel",
-                                    fontWeight: 800,
-                                    paddingLeft: "40px",
-                                }}
-                            >
-                                <SearchIcon></SearchIcon>
-                            </Typography>
                         </Toolbar>
                     </AppBar>
                 </div>
                 <br></br>
+
+
                 <div style={{ margin: "auto", width: "90%" }}>
                     <Grid
                         container
@@ -210,10 +198,12 @@ function Catalog() {
                             margin: "auto",
                         }}
                     >
-                        {state.products.map((product) => (
+                        {state.products.map((product) => (                        
                             <ProductCard
+                            style={{width:'20%'}}
                                 name={product.name}
                                 price={product.product_cost}
+                                id={product.id}
                             />
                         ))}
                     </Grid>
