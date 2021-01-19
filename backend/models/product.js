@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 
-
 export default (sequelize) => {
     class Product extends Model {
         toJSON() {
@@ -8,6 +7,8 @@ export default (sequelize) => {
                 id: this.id,
                 name: this.name,
                 product_cost: this.product_cost,
+                images: this.Images,
+                description: this.description,
             };
         }
     }

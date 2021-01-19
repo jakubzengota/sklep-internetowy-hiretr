@@ -3,12 +3,13 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import userRouter from "./routes/user";
 import emailRouter from "./routes/email";
-import productRouter from "./routes/product"
+import productRouter from "./routes/product";
 import models, { sequalize } from "./models";
 import passport from "./passport";
 
 //
 const app = express();
+app.use(express.static("public"));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -19,7 +20,6 @@ app.get("/test", passport.authenticate("jwt", { session: false }), (req, res) =>
 app.use("/users", userRouter);
 app.use("/email", emailRouter);
 app.use("/products", productRouter);
-
 
 const port = process.env.PORT;
 sequalize.sync().then(() => {

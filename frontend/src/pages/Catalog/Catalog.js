@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { Link }  from "react-router-dom";
-import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
@@ -22,9 +22,8 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     paper2: {
-        padding: theme.spacing(6),
         textAlign: "center",
-        height: "300px",
+        overflow: "hidden",
     },
 }));
 
@@ -34,7 +33,6 @@ function Catalog() {
         open: false,
         products: [],
     });
-
 
     const handleToggle = () => {
         setState({
@@ -63,15 +61,30 @@ function Catalog() {
     }
 
     const anchorRef = React.useRef(null);
-    function ProductCard({ name, price, id }) {
+    function ProductCard({ name, price, id, image }) {
         return (
-            <Grid item xs={4}>
+            <Grid item xs={4} md={3}>
                 <Paper className={classes.paper2}>
-                    {`${name} ${price}`} 
-                    <br></br>
-                <Link to={"/catalog/" + `${id}`}  style={{textDecoration: "none"}}> 
-                <Button variant="outlined">Details</Button>
-                 </Link>
+                    <div
+                        style={{
+                            width: "100%",
+                            paddingTop: "150%",
+                            backgroundImage: `url(${image})`,
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                        }}
+                    />
+                    <div style={{ padding: 20 }}>
+                        {`${name} ${price}`}
+                        <br></br>
+                        <Link
+                            to={"/catalog/" + `${id}`}
+                            style={{ textDecoration: "none" }}
+                        >
+                            <Button variant="outlined">Details</Button>
+                        </Link>
+                    </div>
                 </Paper>
             </Grid>
         );
@@ -108,7 +121,7 @@ function Catalog() {
             >
                 <br></br>
                 <div className={classes.root}>
-                <AppBar
+                    <AppBar
                         position="static"
                         style={{ backgroundColor: "white", height: "40px" }}
                     >
@@ -187,23 +200,23 @@ function Catalog() {
                 </div>
                 <br></br>
 
-
                 <div style={{ margin: "auto", width: "90%" }}>
                     <Grid
                         container
-                        spacing={9}
+                        spacing={3}
                         style={{
                             paddingTop: "30px",
                             width: "90%",
                             margin: "auto",
                         }}
                     >
-                        {state.products.map((product) => (                        
+                        {state.products.map((product) => (
                             <ProductCard
-                            style={{width:'20%'}}
+                                style={{ width: "20%" }}
                                 name={product.name}
                                 price={product.product_cost}
                                 id={product.id}
+                                image={product.images[0].medium}
                             />
                         ))}
                     </Grid>
