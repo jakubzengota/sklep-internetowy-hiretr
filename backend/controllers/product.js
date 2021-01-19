@@ -7,7 +7,10 @@ const Product = models.Product;
 const secret = "bla";
 
 export const getProducts = async (req, res, next) => {
-    const products = await Product.findAll();
+    const { orderBy = "ASC", sortBy = "name" } = req.body;
+    const products = await Product.findAll({
+        order: [[sortBy, orderBy.toUpperCase()]],
+    });
     return res.json({ Products: products });
 };
 
