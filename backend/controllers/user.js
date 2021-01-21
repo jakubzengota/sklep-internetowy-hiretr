@@ -14,7 +14,7 @@ const isValidUser = (request) => {
         const password = request.body.password || "";
         const firstName = request.body.firstName || "";
         const lastName = request.body.lastName || "";
-        
+
         if (email && password && firstName && lastName) {
             return true;
         }
@@ -23,26 +23,30 @@ const isValidUser = (request) => {
 };
 
 export const signIn = async (req, res, next) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
-    if (!user) {
-        return res.status(401).json({
-            success: false,
-            message: "uzytkownik nie istnieje",
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ where: { email } });
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "uzytkownik nie istnieje",
+            });
+        }
+        if (!(await user.comparePassword(password))) {
+            return res.status(401).json({
+                success: false,
+                message: "nieprawidlowe haslo",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            token: jwt.sign({ id: user.id }, secret, { expiresIn: 60 * 60 }),
+            redirect: "/",
+            user: user.toJSON(),
         });
+    } catch (e) {
+        console.log(e);
     }
-    if (!(await user.comparePassword(password))) {
-        return res.status(401).json({
-            success: false,
-            message: "nieprawidlowe haslo",
-        });
-    }
-    res.status(200).json({
-        success: true,
-        token: jwt.sign({ id: user.id }, secret, { expiresIn: 60 * 60 }),
-        redirect: "/",
-        user: user.toJSON(),
-    });
 };
 export const signUp = async (req, res, next) => {
     const email = req.body.email || null;

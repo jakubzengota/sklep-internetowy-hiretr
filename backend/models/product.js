@@ -1,18 +1,8 @@
-import { DataTypes, Model } from "sequelize";
+// import { Model } from "sequelize";
 
-export default (sequelize) => {
-    class Product extends Model {
-        toJSON() {
-            return {
-                id: this.id,
-                name: this.name,
-                product_cost: this.product_cost,
-                images: this.Images,
-                description: this.description,
-            };
-        }
-    }
-    Product.init(
+export default (sequelize, DataTypes) => {
+    const Product = sequelize.define(
+        "Product",
         {
             name: DataTypes.STRING(50),
             product_number: DataTypes.STRING(25),
@@ -21,10 +11,18 @@ export default (sequelize) => {
             description: DataTypes.STRING,
         },
         {
-            sequelize,
             tableName: "products",
             timestamps: false,
         }
     );
+    Product.prototype.toJSON = function () {
+        return {
+            id: this.id,
+            name: this.name,
+            product_cost: this.product_cost,
+            images: this.Images,
+            description: this.description,
+        };
+    };
     return Product;
 };

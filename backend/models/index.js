@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize, DataTypes } from "sequelize";
 
 import User from "./user";
 import Product from "./product";
@@ -16,7 +16,7 @@ const models = {
 };
 
 Object.keys(models).map((key) => {
-    models[key] = models[key](sequalize);
+    models[key] = models[key](sequalize, DataTypes);
 });
 
 models.Product.hasMany(models.Image, {
