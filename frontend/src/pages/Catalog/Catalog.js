@@ -76,8 +76,8 @@ function Catalog() {
                         }}
                     />
                     <div style={{ padding: 20 }}>
-                        {`${name} ${price}`}
-                        <br></br>
+                        <p>{`${name}`}</p>
+                        <p style={{fontFamily: "Cinzel", fontWeight: 800}}>{`${price}`}</p>
                         <Link
                             to={"/catalog/" + `${id}`}
                             style={{ textDecoration: "none" }}

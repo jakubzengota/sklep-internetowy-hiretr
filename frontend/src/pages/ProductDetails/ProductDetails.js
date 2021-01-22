@@ -4,15 +4,12 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { useParams } from "react-router-dom";
+import Cart from "../../components/Cart/Cart";
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,19 +23,42 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const options = [
-  'XS',
-  'S',
-  'M',
-  'L',
-  'XL',
-  'XXL',
+    {
+        value: 'XS',
+        label: 'XS',
+    },
+    {
+        value: 'S',
+        label: 'S',
+    },
+    {
+        value: 'M',
+        label: 'M',
+    },
+    {
+        value: 'L',
+        label: 'L',
+    },
+    {
+        value: 'XL',
+        label: 'XL',
+    },
+    {
+        value: 'XXL',
+        label: 'XXL',
+    },
 ];
 
 function ProductDetails() {
     const {id} = useParams()
     const [state, setState] = React.useState({
-        name: "",
-        price: "",
+        activeProduct: {
+            name: "",
+            product_cost: "",
+            description: "",
+            amount: 1,
+            size: ""
+        },
     });
 
 
@@ -46,28 +66,27 @@ function ProductDetails() {
         const response = await fetch(`http://localhost:4000/products/${id}`);
         const json = await response.json();
         setState({
-            name: json.product.name,
-            price: json.product.product_cost
+            activeProduct: json.product
         });
     }, []);
 
     const classes = useStyles();
-    
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [option, setSize] = React.useState('XXL');
 
-    const handleClickListItem = (event) => {
-        setAnchorEl(event.currentTarget);
+
+   const addProduct = (event, product) => {
+       console.log(product)
+    }
+
+   const handleChange = (event) => {
+       let { name, value } = event.target;
+       if(event.target.type === "text"){
+        setSize(event.target.value);
+       }
+       let activeProduct = {...state.activeProduct, [name]: value};
+       setState({activeProduct});
     };
 
-    const handleMenuItemClick = (event, index) => {
-        setSelectedIndex(index);
-        setAnchorEl(null);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
 
     return (
@@ -102,7 +121,7 @@ function ProductDetails() {
                                 marginBottom: "40px",
                             }}
                         >   
-                        {state.name}
+                        {state.activeProduct.name}
                         </Typography>                     
                         <Typography
                             style={{
@@ -112,46 +131,44 @@ function ProductDetails() {
                                 marginBottom: "25px",
                             }}
                         >   
-                        {state.price}
-                        </Typography>                          
+                        {state.activeProduct.product_cost}
+                        </Typography>
+                        <Typography
+                            style={{
+                                color: "black",
+                                marginBottom: "25px",
+                            }}
+                        >   
+                        {state.activeProduct.description}
+                        </Typography>                        
                         
                         <div className={classes.root}>
-                            <List component="nav" aria-label="Size options">
-                                <ListItem
-                                button
-                                aria-haspopup="true"
-                                aria-controls="lock-menu"
-                                aria-label="Choose your size"
-                                onClick={handleClickListItem}
-                                >
-                                <ListItemText primary="Choose your size" secondary={options[selectedIndex]} />
-                                </ListItem>
-                            </List>
-                            <Menu
-                                id="lock-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                                {options.map((option, index) => (
-                                <MenuItem
-                                    key={option}
-                                    selected={index === selectedIndex}
-                                    onClick={(event) => handleMenuItemClick(event, index)}
-                                >
-                                    {option}
-                                </MenuItem>
-                                ))}
-                            </Menu>
-                            </div>
+                        <TextField
+                        id="outlined-select"
+                        select
+                        type = "text"
+                        label="Size"
+                        name= "size"
+                        value={option}
+                        onChange={handleChange}
+                        SelectProps={{
+                            native: true,
+                        }}
+                        variant="outlined">
+                            {options.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                        </TextField>
+                        </div><br></br>
 
                         <FormControl className={classes.margin}>
-                            <TextField id="outlined-basic" label="Type in amount" variant="outlined" />
+                            <TextField id="outlined-basic" name="amount" label="Amount" type="number" onChange={handleChange}/>
                         </FormControl>
                         <br></br><br></br>
                         <div>
-                            <Button variant="outlined" color="primary">
+                            <Button variant="outlined" color="primary" onClick={(event) => addProduct(event, state.activeProduct)}>
                                 Add to Cart
                             </Button>  
                         </div>          
