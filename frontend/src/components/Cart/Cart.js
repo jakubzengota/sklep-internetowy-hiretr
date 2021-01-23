@@ -25,8 +25,7 @@ const StyledBadge = withStyles((theme) => ({
     },
   }));
 
-export default function Cart(props) {
-
+export default function Cart() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
@@ -51,7 +50,7 @@ export default function Cart(props) {
       </StyledBadge>
     </IconButton>
     <Popper id={id} open={open} anchorEl={anchorEl}>
-        <div className={classes.paper}>{props.newproduct}
+        <div className={classes.paper}>
         <br></br>
         <p style={{fontFamily: 'Cinzel', fontWeight: 800}}>0.00 PLN</p>
         <Button variant="outlined">checkout</Button> 

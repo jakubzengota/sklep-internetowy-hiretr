@@ -7,10 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { useParams } from "react-router-dom";
-import Cart from "../../components/Cart/Cart";
-
-
-
 
 const useStyles = makeStyles((theme) => ({
     paperRoot: {
@@ -53,6 +49,7 @@ function ProductDetails() {
     const {id} = useParams()
     const [state, setState] = React.useState({
         activeProduct: {
+            id: "",
             name: "",
             product_cost: "",
             description: "",
@@ -75,7 +72,14 @@ function ProductDetails() {
 
 
    const addProduct = (event, product) => {
-       console.log(product)
+       let toSave = {
+           id: product.id,
+           name: product.name,
+           price: product.product_cost,
+           amount: product.amount,
+           size: product.size
+       }
+       console.log(toSave);
     }
 
    const handleChange = (event) => {
@@ -86,8 +90,6 @@ function ProductDetails() {
        let activeProduct = {...state.activeProduct, [name]: value};
        setState({activeProduct});
     };
-
-
 
     return (
         <React.Fragment>

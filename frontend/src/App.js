@@ -1,9 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-
 import AppBar from "./components/AppBar";
-
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -16,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
 }));
+
+
 
 function App() {
     const classes = useStyles();
