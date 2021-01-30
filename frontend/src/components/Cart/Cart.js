@@ -7,6 +7,10 @@ import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Paper from "@material-ui/core/Paper";
+import { Link } from "react-router-dom";
+import ProductContainer from "../../containers/ProductContainer"
+
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -29,6 +33,17 @@ export default function Cart() {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
+    const products = ProductContainer.useContainer();
+    console.log(products);
+    const [state, setState] = React.useState({
+        open: false,
+        products: [{
+            name: "bla",
+            product_cost: "30zl",
+            id: 1,
+        }],
+    });
+
     const handleClick = (event) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
         };
@@ -36,7 +51,27 @@ export default function Cart() {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
+
+
+
+       // ADD ITEM
         
+
+    //DODAJ
+    function OneItem({ name, price, id }) {
+        return (
+            <Grid>
+                <Paper className={classes.paper2}>
+                    <div
+                    />
+                    <div style={{ padding: 20 }}>
+                        {`${name} ${price}`}
+                    </div>
+                </Paper>
+            </Grid>
+        );
+    }
+        //CHANGE AMOUNNT
     return (
         <Grid
       container
@@ -44,16 +79,35 @@ export default function Cart() {
       justify="flex-start"
       alignItems="baseline"
       style={{paddingRight:'15px', fontFamily: 'Cinzel', fontWeight: 800}}> 0.00 PLN
-        <IconButton aria-label="cart" onClick={handleClick}>
+       <IconButton aria-label="cart" onClick={handleClick}>
       <StyledBadge badgeContent={0} color="primary" >
         <ShoppingCartIcon />
       </StyledBadge>
+      <div style={{ margin: "auto", width: "90%" }}>
+            
+        </div>
     </IconButton>
     <Popper id={id} open={open} anchorEl={anchorEl}>
         <div className={classes.paper}>
         <br></br>
-        <p style={{fontFamily: 'Cinzel', fontWeight: 800}}>0.00 PLN</p>
-        <Button variant="outlined">checkout</Button> 
+        <Grid
+                container
+                spacing={3}
+                style={{
+                    
+                }}
+            >
+                {products.items.map((item) => (
+                    <OneItem
+                        style={{ width: "20%" }}
+                        name={item.product.name}
+                        price={item.product.product_cost}
+                        id={item.product.id}
+                    />
+                ))}
+            </Grid>
+        <p style={{fontFamily: 'Cinzel', fontWeight: 800}}>0.01 PLN</p>
+        <Button variant="outlined">KUP</Button> 
         </div>
       </Popper>
         </Grid>    

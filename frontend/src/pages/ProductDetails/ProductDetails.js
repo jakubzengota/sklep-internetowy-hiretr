@@ -4,9 +4,17 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@material-ui/core/Fade';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { useParams } from "react-router-dom";
+import ProductContainer from "../../containers/ProductContainer";
+
 
 const useStyles = makeStyles((theme) => ({
     paperRoot: {
@@ -19,77 +27,57 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const options = [
-    {
-        value: 'XS',
-        label: 'XS',
-    },
-    {
-        value: 'S',
-        label: 'S',
-    },
-    {
-        value: 'M',
-        label: 'M',
-    },
-    {
-        value: 'L',
-        label: 'L',
-    },
-    {
-        value: 'XL',
-        label: 'XL',
-    },
-    {
-        value: 'XXL',
-        label: 'XXL',
-    },
+  'XS',
+  'S',
+  'M',
+  'L',
+  'XL',
+  'XXL',
 ];
 
 function ProductDetails() {
     const {id} = useParams()
+    const products=ProductContainer.useContainer();
     const [state, setState] = React.useState({
-        activeProduct: {
-            id: "",
-            name: "",
-            product_cost: "",
-            description: "",
-            amount: 1,
-            size: ""
-        },
+        name: "",
+        price: "",
     });
 
-
+console.log(state);
     React.useEffect(async () => {
         const response = await fetch(`http://localhost:4000/products/${id}`);
         const json = await response.json();
-        setState({
-            activeProduct: json.product
-        });
+        
+        setState(json.product);
     }, []);
 
     const classes = useStyles();
-    const [option, setSize] = React.useState('XXL');
+    
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
 
+    const handleClickListItem = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    
+    const handleMenuItemClick = (event, index) => {
+        setSelectedIndex(index);
+        setAnchorEl(null);
+    };
 
-   const addProduct = (event, product) => {
-       let toSave = {
-           id: product.id,
-           name: product.name,
-           price: product.product_cost,
-           amount: product.amount,
-           size: product.size
-       }
-       console.log(toSave);
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    
+    const handleAdd = () => {
+
+    // dodanie elementu do tablicy(istniejacej)
+        products.setItems(products.items.concat({
+            amount: 1,
+            product: state,
+        }));
     }
 
-   const handleChange = (event) => {
-       let { name, value } = event.target;
-       if(event.target.type === "text"){
-        setSize(event.target.value);
-       }
-       let activeProduct = {...state.activeProduct, [name]: value};
-       setState({activeProduct});
-    };
 
     return (
         <React.Fragment>
@@ -123,7 +111,7 @@ function ProductDetails() {
                                 marginBottom: "40px",
                             }}
                         >   
-                        {state.activeProduct.name}
+                        {state.name}
                         </Typography>                     
                         <Typography
                             style={{
@@ -133,44 +121,46 @@ function ProductDetails() {
                                 marginBottom: "25px",
                             }}
                         >   
-                        {state.activeProduct.product_cost}
-                        </Typography>
-                        <Typography
-                            style={{
-                                color: "black",
-                                marginBottom: "25px",
-                            }}
-                        >   
-                        {state.activeProduct.description}
-                        </Typography>                        
+                        {state.price}
+                        </Typography>                          
                         
                         <div className={classes.root}>
-                        <TextField
-                        id="outlined-select"
-                        select
-                        type = "text"
-                        label="Size"
-                        name= "size"
-                        value={option}
-                        onChange={handleChange}
-                        SelectProps={{
-                            native: true,
-                        }}
-                        variant="outlined">
-                            {options.map((option) => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                        </TextField>
-                        </div><br></br>
+                            <List component="nav" aria-label="Size options">
+                                <ListItem
+                                button
+                                aria-haspopup="true"
+                                aria-controls="lock-menu"
+                                aria-label="Choose your size"
+                                onClick={handleClickListItem}
+                                >
+                                <ListItemText primary="Choose your size" secondary={options[selectedIndex]} />
+                                </ListItem>
+                            </List>
+                            <Menu
+                                id="lock-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={handleClose}
+                            >
+                                {options.map((option, index) => (
+                                <MenuItem
+                                    key={option}
+                                    selected={index === selectedIndex}
+                                    onClick={(event) => handleMenuItemClick(event, index)}
+                                >
+                                    {option}
+                                </MenuItem>
+                                ))}
+                            </Menu>
+                            </div>
 
                         <FormControl className={classes.margin}>
-                            <TextField id="outlined-basic" name="amount" label="Amount" type="number" onChange={handleChange}/>
+                            <TextField id="outlined-basic" label="Type in amount" variant="outlined" />
                         </FormControl>
                         <br></br><br></br>
                         <div>
-                            <Button variant="outlined" color="primary" onClick={(event) => addProduct(event, state.activeProduct)}>
+                            <Button onClick={handleAdd} variant="outlined" color="primary">
                                 Add to Cart
                             </Button>  
                         </div>          

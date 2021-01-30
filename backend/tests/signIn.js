@@ -14,6 +14,7 @@ describe("signIn", () => {
         "../models": mockModels,
     });
     const email = "jeremiwielewski@wp.pl";
+    
     const password = "jeremi";
     const fakeUser = {
         id: 1,
