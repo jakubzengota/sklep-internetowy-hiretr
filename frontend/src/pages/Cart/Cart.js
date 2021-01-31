@@ -7,6 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import { useParams } from "react-router-dom";
 import ProductContainer from "../../containers/ProductContainer";
 import TextField from '@material-ui/core/TextField';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,22 +42,39 @@ function Cart() {
                 <div>
                     <Grid container spacing={3}>                    
                         <Grid item xs={8}>  
-                            <Paper variant="outlined">
-                                <Typography style={{fontFamily: 'Cinzel', padding: '2%'}}>
-                                    Miejsce na elementy w koszyku.
-                                    <p>
-                                    <TextField                                        
+                           <div style={{display: "flex",}}>
+                            <div style={{height: 160, width: 120, backgroundColor: "red",}}></div> 
+                            <div style={{flexGrow: 1, padding: 10,}}>
+                                <Typography variant="h6">
+                                    Bluza
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                    Kolor: Beżowy
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                    Rozmiar: XL
+                                </Typography>
+                                <TextField                                        
                                         size="small"
                                         id="standard-number"
                                         label="Ilość"
                                         type="number"
+                                        style={{
+                                            width: 80,
+                                        }}
                                         InputLabelProps={{
                                             shrink: true,
-                                        }}
-                                    />
-                                    </p>                                                                 
-                                </Typography>                                
-                            </Paper>
+                                        }}/>
+                                  
+                                    
+                            </div>
+                            <div>
+                                <IconButton disableRipple >
+                                    <DeleteIcon size="small"/>
+                                </IconButton>
+                            </div>
+                            </div>                        
+                              
                         </Grid>
                         <Grid item xs={4}>
                             <Paper variant="outlined" style={{padding: '2%'}}>                                                           
