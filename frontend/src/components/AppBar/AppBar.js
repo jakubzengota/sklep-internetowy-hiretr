@@ -43,12 +43,13 @@ export default function DenseAppBar() {
       <img src='https://i.imgur.com/cVrvjAS.png' alt="logo" style={{width: '150px'}}></img>
       </Grid>
       <Grid
-     container
-     direction="column"
-     justify="space-between"
-     alignItems="center"
-      style={{fontSize:'20px', fontFamily: 'Cinzel', fontWeight: 800, paddingBottom: '10px'}}
+        container
+        direction="column"
+        justify="space-between"
+        alignItems="center"
+        style={{fontSize:'20px', fontFamily: 'Cinzel', fontWeight: 800, paddingBottom: '10px'}}
       >
+      
       </Grid>  
       </div>
   );

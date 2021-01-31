@@ -18,15 +18,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const options = [
-  'XS',
-  'S',
-  'M',
-  'L',
-  'XL',
-  'XXL',
-];
-
 function Cart() {
     const classes = useStyles();
     return (
