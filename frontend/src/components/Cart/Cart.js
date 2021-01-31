@@ -101,13 +101,15 @@ export default function Cart() {
                     <OneItem
                         style={{ width: "20%" }}
                         name={item.product.name}
-                        price={item.product.product_cost}
+                        price={item.product.price}
                         id={item.product.id}
                     />
                 ))}
             </Grid>
         <p style={{fontFamily: 'Cinzel', fontWeight: 800}}>0.01 PLN</p>
-        <Button variant="outlined">KUP</Button> 
+        <Link to={"/cart"} style={{ textDecoration: "none" }}>
+            <Button variant="outlined">Zobacz koszyk</Button>
+        </Link> 
         </div>
       </Popper>
         </Grid>    

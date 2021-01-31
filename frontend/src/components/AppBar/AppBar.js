@@ -117,7 +117,7 @@ export default function DenseAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography style={{fontSize: '15px', fontFamily: 'Cinzel', fontWeight: 800, alignItems: 'center'}}>
-            FREE SHIPPING | FREE RETURNS
+            DARMOWA DOSTAWA | DARMOWY ZWROT
           </Typography>
         </Toolbar>
       </AppBar>
@@ -136,42 +136,28 @@ export default function DenseAppBar() {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {['All products', 'Sign In', 'Sign Out', 'Cart'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+        <List style={{fontFamily: 'Open Sans Condensed'}}>
+            <ListItem button component={Link} to="/catalog">         
+              <ListItemText primary="Produkty" />
             </ListItem>
-          ))}
+            {!authenticated && (
+              <ListItem button component={Link} to="/signin">         
+              <ListItemText primary="Zaloguj" />
+            </ListItem>
+            )}
+             <ListItem button component={Link} to="/cart">         
+              <ListItemText primary="Koszyk" />
+            </ListItem>
+            
         </List>
         <Divider />
-        <List>
-          {['Sign In', 'Sign Out', 'All products'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
-        {!authenticated && (
-              <Grid
-              container
-              direction="row-reverse"
-              justify="flex-start"
-              alignItems="baseline"
-              style={{fontSize: '20px', fontFamily: 'Cinzel', fontWeight: 800, paddingTop: '10px'}}
-              >
-                  <Link style={{paddingRight: '15px', textDecoration: 'none', color: 'black'}} to="/signup">Sign Up</Link>
-                  <Link style={{paddingRight: '10px', textDecoration: 'none', color: 'black'}} to="/signin">Sign In</Link>
-              </Grid>
-        )}
           <Grid
           container
           direction="column"
           justify="space-between"
           alignItems="center"
-          style={{paddingTop:'40px'}}
+          style={{paddingTop:'80px'}}
           >
           <img src='https://i.imgur.com/cVrvjAS.png' alt="logo" style={{width: '150px'}}></img>
           </Grid>

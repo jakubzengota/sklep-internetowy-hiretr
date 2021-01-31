@@ -97,7 +97,7 @@ function SignUp() {
         <Container component="main" maxWidth="xs">
             <div
                 style={{
-                    marginTop: 64,
+                    marginTop: 30,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -116,13 +116,14 @@ function SignUp() {
                 >
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
+                <Typography component="h1" variant="h5" style={{fontFamily: 'Open Sans Condensed'}}>
+                    Rejestracja
                 </Typography>
                 <form
                     style={{
                         width: "100%", // Fix IE 11 issue.
                         marginTop: 24,
+                        fontFamily: 'Open Sans Condensed'
                     }}
                     onSubmit={formik.handleSubmit}
                     noValidate
@@ -136,7 +137,7 @@ function SignUp() {
                                 required
                                 fullWidth
                                 id="firstName"
-                                label="First Name"
+                                label="Imię"
                                 value={formik.values.firstName}
                                 onChange={formik.handleChange}
                                 autoFocus
@@ -156,7 +157,7 @@ function SignUp() {
                                 required
                                 fullWidth
                                 id="lastName"
-                                label="Last Name"
+                                label="Nazwisko"
                                 name="lastName"
                                 autoComplete="lname"
                                 value={formik.values.lastName}
@@ -177,7 +178,7 @@ function SignUp() {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Email Address"
+                                label="Adres e-mail"
                                 name="email"
                                 autoComplete="email"
                                 value={formik.values.email}
@@ -197,7 +198,7 @@ function SignUp() {
                                 required
                                 fullWidth
                                 name="password"
-                                label="Password"
+                                label="Hasło"
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
@@ -219,7 +220,7 @@ function SignUp() {
                                 required
                                 fullWidth
                                 name="password2"
-                                label="Password confirm"
+                                label="Powtórz hasło"
                                 type="password"
                                 id="password2"
                                 autoComplete="current-password"
@@ -243,7 +244,7 @@ function SignUp() {
                                         color="primary"
                                     />
                                 }
-                                label="I want to receive inspiration, marketing promotions and updates via email."
+                                label="Tak, proszę o przesyłanie ofert, informacji o nowych trendach i specjalnych zaproszeń na wyprzedaże i wydarzenia."
                             />
                         </Grid>
                     </Grid>
@@ -257,7 +258,7 @@ function SignUp() {
                             margin: "24px 0px 16px", backgroundColor: '#d2c1c9'
                         }}
                     >
-                        Sign Up
+                        Zarejestruj się
                     </LoadingButton>
                     <Grid container justify="flex-end">
                         <Grid item>
@@ -267,7 +268,7 @@ function SignUp() {
                                 variant="body2"
                                 style={{color: '#9f6667'}}
                             >
-                                Already have an account? Sign in
+                                Masz już konto? Zaloguj się!
                             </Link>
                         </Grid>
                     </Grid>

@@ -53,8 +53,8 @@ function Cart() {
                                 <div style={{fontFamily: 'Open Sans Condensed', fontSize: '20px'}}>
                                     <h3>DOSTAWA</h3>
                                         Czas dostawy to standardowo 2-3 dni robocze.<br></br>
-                                        • Dostawa DHL na adres domowy – 9,90 PLN<br></br>
-                                        • Dostawa do paczkomatu InPost 24/7 – 7,90 PLN<br></br>
+                                        • Dostawa DHL na adres domowy – 0,00 PLN<br></br>
+                                        • Dostawa do paczkomatu InPost 24/7 – 0,00 PLN<br></br>
                                         • Dostawa następnego dnia na adres domowy, 19,90 PLN.<br></br>
                                     <hr></hr>
                                     <p style={{textAlign: 'center'}}>

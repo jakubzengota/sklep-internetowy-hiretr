@@ -13,6 +13,7 @@ import Grow from "@material-ui/core/Grow";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
+import Cart from "../../components/Cart/Cart";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -76,13 +77,13 @@ function Catalog() {
                         }}
                     />
                     <div style={{ padding: 20 }}>
-                        {`${name} ${price}`}
-                        <br></br>
+                    <p style={{fontSize: "13px"}}>{`${name}`}</p>
+                        <p style={{fontFamily: 'Open Sans Condensed', fontWeight: "normal", fontSize:"15px"}}>{`${price}`}</p>
                         <Link
                             to={"/catalog/" + `${id}`}
                             style={{ textDecoration: "none" }}
                         >
-                            <Button variant="outlined">Details</Button>
+                            <Button variant="outlined">Zobacz</Button>
                         </Link>
                     </div>
                 </Paper>
@@ -134,7 +135,7 @@ function Catalog() {
                                     fontWeight: 800,
                                 }}
                             >
-                                Sort by
+                                Sortuj
                                 <ExpandMoreIcon
                                     ref={anchorRef}
                                     aria-controls={
@@ -195,7 +196,18 @@ function Catalog() {
                                     </Grow>
                                 )}
                             </Popper>
+                            <Typography
+                                style={{
+                                    color: "black",
+                                    fontSize: "15px",
+                                    fontFamily: "Cinzel",
+                                    fontWeight: 800,
+                                }}
+                            >
+                                <Cart />
+                            </Typography>
                         </Toolbar>
+                        
                     </AppBar>
                 </div>
                 <br></br>

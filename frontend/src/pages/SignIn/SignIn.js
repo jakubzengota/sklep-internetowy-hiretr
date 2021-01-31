@@ -113,7 +113,7 @@ function SignIn() {
         <Container component="main" maxWidth="xs">
             <div
                 style={{
-                    marginTop: 36,
+                    marginTop: 30,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -132,8 +132,8 @@ function SignIn() {
                         {state.error}
                     </Typography>
                 </Collapse>
-                <Typography component="h1" variant="h5">
-                    Sign in
+                <Typography component="h1" variant="h5" style={{fontFamily: 'Open Sans Condensed'}}>
+                    Zaloguj się
                 </Typography>
                 <form
                     style={{
@@ -148,7 +148,7 @@ function SignIn() {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label="Adres e-mail"
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -165,7 +165,7 @@ function SignIn() {
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label="Hasło"
                         type="password"
                         id="password"
                         autoComplete="current-password"
@@ -186,12 +186,12 @@ function SignIn() {
                         color="primary"
                         style={{ margin: "24px 0px 16px", backgroundColor: '#d2c1c9'}}
                     >
-                        Sign In
+                        Zaloguj
                     </Button>
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2" style={{color: '#9f6667'}}>
-                                Forgot password?
+                                Nie pamiętasz hasła?
                             </Link>
                         </Grid>
                         <Grid item>
@@ -201,7 +201,7 @@ function SignIn() {
                                 variant="body2"
                                 style={{color: '#9f6667'}}
                             >
-                                {"Don't have an account? Sign Up"}
+                                {"Nie masz konta? Zarejestruj się!"}
                             </Link>
                         </Grid>
                     </Grid>

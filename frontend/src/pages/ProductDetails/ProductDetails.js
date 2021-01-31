@@ -6,14 +6,14 @@ import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
+import Toolbar from "@material-ui/core/Toolbar";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useParams } from "react-router-dom";
 import ProductContainer from "../../containers/ProductContainer";
+import Cart from "../../components/Cart/Cart";
+import AppBar from '@material-ui/core/AppBar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +41,7 @@ function ProductDetails() {
     const [state, setState] = React.useState({
         name: "",
         price: "",
+        description: ""
     });
 
 console.log(state);
@@ -48,7 +49,11 @@ console.log(state);
         const response = await fetch(`http://localhost:4000/products/${id}`);
         const json = await response.json();
         
-        setState(json.product);
+        setState({
+            name: json.product.name,
+            price: json.product.product_cost,
+            description: json.product.description,
+        });
     }, []);
 
     const classes = useStyles();
@@ -89,11 +94,30 @@ console.log(state);
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                 }}
-            >
-                <br></br>                
+            ><br></br>
+                <AppBar
+                        position="static"
+                        style={{ backgroundColor: "white", height: "40px" }}
+                    >
+                        <Toolbar variant="dense">
+                            <Typography
+                                style={{
+                                    color: "black",
+                                    fontSize: "15px",
+                                    fontFamily: "Cinzel",
+                                    fontWeight: 800,
+                                }}
+                            >
+                                <Cart />
+                            </Typography>
+                        </Toolbar>
+                        
+                    </AppBar>    
+                    <br></br>            
             </div>
-                <br></br>  
+ 
             <div style={{ margin: "auto", width: "90%" }}>
+                <br></br>
                 <Grid container spacing={3}>                    
                     <Grid item xs={5}>                        
                         <Paper elevation={3}
@@ -123,7 +147,7 @@ console.log(state);
                         >   
                         {state.price}
                         </Typography>                          
-                        
+                        <p style={{fontFamily: 'Open Sans Condensed', fontSize: '20px', fontWeight:'normal'}}>{state.description}</p>
                         <div className={classes.root}>
                             <List component="nav" aria-label="Size options">
                                 <ListItem
@@ -133,7 +157,7 @@ console.log(state);
                                 aria-label="Choose your size"
                                 onClick={handleClickListItem}
                                 >
-                                <ListItemText primary="Choose your size" secondary={options[selectedIndex]} />
+                                <ListItemText primary="Choose your size"  secondary={options[selectedIndex]} />
                                 </ListItem>
                             </List>
                             <Menu
@@ -154,14 +178,10 @@ console.log(state);
                                 ))}
                             </Menu>
                             </div>
-
-                        <FormControl className={classes.margin}>
-                            <TextField id="outlined-basic" label="Type in amount" variant="outlined" />
-                        </FormControl>
-                        <br></br><br></br>
+                        <br></br>
                         <div>
                             <Button onClick={handleAdd} variant="outlined" color="primary">
-                                Add to Cart
+                                Dodaj do koszyka
                             </Button>  
                         </div>          
                     </Grid>
