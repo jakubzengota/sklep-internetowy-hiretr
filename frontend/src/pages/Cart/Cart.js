@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import { useParams } from "react-router-dom";
 import ProductContainer from "../../containers/ProductContainer";
+import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +42,18 @@ function Cart() {
                             <Paper variant="outlined">
                                 <Typography style={{fontFamily: 'Cinzel', padding: '2%'}}>
                                     Miejsce na elementy w koszyku.
-                                </Typography>
+                                    <p>
+                                    <TextField                                        
+                                        size="small"
+                                        id="standard-number"
+                                        label="Ilość"
+                                        type="number"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                    />
+                                    </p>                                                                 
+                                </Typography>                                
                             </Paper>
                         </Grid>
                         <Grid item xs={4}>
