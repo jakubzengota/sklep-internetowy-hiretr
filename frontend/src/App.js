@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import EmailVerification from "./pages/EmailVerification";
 import Catalog from "./pages/Catalog";
 import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
 
 const initialState = [{
     amount: 1,
@@ -50,7 +51,10 @@ function App() {
                     </Route>                
                     <Route path="/catalog/:id">
                         <ProductDetails />
-                    </Route>                       
+                    </Route> 
+                    <Route path="/cart">
+                        <Cart />
+                    </Route>                    
                 </Switch>
             </div>
         </ProductContainer.Provider>

@@ -49,10 +49,7 @@ export default function DenseAppBar() {
      alignItems="center"
       style={{fontSize:'20px', fontFamily: 'Cinzel', fontWeight: 800, paddingBottom: '10px'}}
       >
-      <Link style={{textDecoration: 'none', color: 'black'}} to="/catalog">All Products</Link>
-      </Grid>   
-      < Cart />   
+      </Grid>  
       </div>
-
   );
 }
