@@ -11,6 +11,9 @@ import EmailVerification from "./pages/EmailVerification";
 import Catalog from "./pages/Catalog";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Finalize from "./pages/Finalize";
+import Summary from "./pages/Summary";
+import Payment from "./pages/Payment";
 
 const initialState = [{
     amount: 1,
@@ -56,7 +59,16 @@ function App() {
                     </Route> 
                     <Route path="/cart">
                         <Cart />
-                    </Route>                    
+                    </Route>
+                    <Route path="/finalize">
+                        <Finalize />
+                    </Route>       
+                    <Route path="/summary">
+                        <Summary />
+                    </Route> 
+                    <Route path="/payment">
+                        <Payment />
+                    </Route>               
                 </Switch>
             </div>
         </ProductContainer.Provider>

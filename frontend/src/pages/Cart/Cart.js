@@ -9,6 +9,7 @@ import ProductContainer from "../../containers/ProductContainer";
 import TextField from '@material-ui/core/TextField';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from "react-router-dom";
 
 
 
@@ -59,6 +60,11 @@ function Cart() {
                                         id="standard-number"
                                         label="Ilość"
                                         type="number"
+                                        InputProps={{
+                                            inputProps: {
+                                                min: 1
+                                            }
+                                        }}
                                         style={{
                                             width: 80,
                                         }}
@@ -79,15 +85,19 @@ function Cart() {
                         <Grid item xs={4}>
                             <Paper variant="outlined" style={{padding: '2%'}}>                                                           
                                 <span style={{fontSize: '20px'}}>Suma:</span>
-                                <br></br>                                
-                                <Button variant="outlined" size="small" fullWidth>Realizacja zamówienia</Button>
+                                <br></br>  
+                                <Link
+                                to={"/finalize"}
+                                style={{ textDecoration: "none" }}
+                        >
+                            <Button variant="outlined" size="small" fullWidth>Zamawiam</Button>
+                            </Link>                              
                                 <hr></hr>
                                 <div style={{fontFamily: 'Open Sans Condensed', fontSize: '20px'}}>
                                     <h3>DOSTAWA</h3>
                                         Czas dostawy to standardowo 2-3 dni robocze.<br></br>
                                         • Dostawa DHL na adres domowy – 0,00 PLN<br></br>
-                                        • Dostawa do paczkomatu InPost 24/7 – 0,00 PLN<br></br>
-                                        • Dostawa następnego dnia na adres domowy, 19,90 PLN.<br></br>
+                                        • Dostawa następnego dnia na adres domowy – 19,90 PLN.<br></br>
                                     <hr></hr>
                                     <p style={{textAlign: 'center'}}>
                                         30 dni na zwrot
