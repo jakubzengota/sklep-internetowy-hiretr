@@ -10,6 +10,7 @@ function Finalize() {
         freeShipping: false,
         paidShipping: false,
         payment: true,
+        permission: false,
       });
 
       const handleChange = (event) => {
@@ -170,7 +171,20 @@ function Finalize() {
                 label="Przelew tradycyjny"
                 />
                 </div>
-                <br></br>
+               <hr></hr>
+                <FormControlLabel
+                control={
+                    <Checkbox
+                    checked={state.permission}
+                    required
+                    onChange={handleChange}
+                    name="permission"
+                    color="primary"
+                    />
+                }
+                label="Wyrażam zgodę na przetwarzanie moich danych osobowych przez Hiretr sp. z o.o oraz przedstawicieli firm kurierskich do potrzeb związanych z dostawą zgodnie z Ustawą o Ochronie Danych Osobowych (Dz. U. 1997 nr 133 poz. 883)."
+                />
+                <br></br><br></br>
                 <Link
                 to={"/summary"}
                 style={{ textDecoration: "none" }}

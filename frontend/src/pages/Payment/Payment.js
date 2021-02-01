@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 function Payment() {
+    //
     return (
         <React.Fragment>
             <div
@@ -33,7 +34,7 @@ function Payment() {
                 59,99 PLN
                 <hr></hr>
 
-                Po dokonanej płatności skontaktujemy się z Tobą drogą mailową. 
+                Po dokonanej płatności skontaktujemy się z Tobą drogą mailową.
                 </div>
                 <br></br>
             <Link
