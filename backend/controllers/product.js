@@ -8,8 +8,15 @@ const Image = models.Image;
 const secret = "bla";
 
 export const getProducts = async (req, res, next) => {
-    const { orderBy = "ASC", sortBy = "name" } = req.body;
+    const {
+        orderBy = "ASC",
+        sortBy = "name",
+        offset = 0,
+        limit = 20,
+    } = req.body;
     const products = await Product.findAll({
+        limit,
+        offset,
         order: [[sortBy, orderBy.toUpperCase()]],
         include: [Image],
     });

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -15,6 +15,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/slices/products";
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Catalog() {
+    const query = useQuery();
+    let offset = parseInt(query.get("offset"));
+    const pageSize = 20;
+    if (isNaN(offset) || offset < 0) {
+        offset = 0;
+    }
     const { productIds, productsById } = useSelector((state) => state.products);
     const products = productIds.map((id) => productsById[id]);
     const dispatch = useDispatch();
@@ -112,11 +122,10 @@ function Catalog() {
     }, [state.open]);
     React.useEffect(() => {
         async function fetchData() {
-            await dispatch(fetchProducts());
+            await dispatch(fetchProducts({ offset, limit: 20 }));
         }
-        console.log("bla");
         fetchData();
-    }, []);
+    }, [offset]);
 
     return (
         <React.Fragment>
@@ -239,6 +248,18 @@ function Catalog() {
                                 image={product.images[0].medium}
                             />
                         ))}
+                        <Grid item xs={12}>
+                            <Button
+                                color="primary"
+                                fullWidth
+                                variant="contained"
+                                component={Link}
+                                to={`/catalog?offset=${offset + pageSize}`}
+                                replace
+                            >
+                                wczytaj więcej produktów
+                            </Button>
+                        </Grid>
                     </Grid>
                 </div>
             </div>

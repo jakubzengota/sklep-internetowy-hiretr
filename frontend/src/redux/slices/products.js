@@ -5,6 +5,7 @@ const inistalState = {
     productsById: {},
     productIds: [],
     loading: false,
+    error: null,
 };
 
 function startLoading(state) {
@@ -13,6 +14,7 @@ function startLoading(state) {
 
 function loadingFailed(state, action) {
     state.loading = false;
+    state.error = action.payload;
 }
 
 export const products = createSlice({
@@ -32,7 +34,10 @@ export const products = createSlice({
             payload.forEach((product) => {
                 state.productsById[product.id] = product;
             });
-            state.productIds = payload.map((product) => product.id);
+            // state.productIds = payload.map((product) => product.id);
+            payload.forEach((product) => {
+                state.productIds.push(product.id);
+            });
         },
         getProductFailure: loadingFailed,
         getProductsFailure: loadingFailed,
@@ -50,13 +55,13 @@ export const {
 
 export default products.reducer;
 
-export const fetchProducts = () => async (dispatch) => {
+export const fetchProducts = ({ offset, limit }) => async (dispatch) => {
     dispatch(getProductStart());
     try {
-        const products = await getProducts();
+        const products = await getProducts({ offset, limit });
         dispatch(getProductsSuccess(products));
     } catch (err) {
-        dispatch(getProductsFailure());
+        dispatch(getProductsFailure(err.toString()));
     }
 };
 
@@ -69,6 +74,6 @@ export const fetchProductById = (productId) => async (dispatch, getState) => {
         dispatch(getProductSuccess(product));
     } catch (err) {
         console.log(err);
-        dispatch(getProductFailure());
+        dispatch(getProductFailure(err.toString()));
     }
 };
