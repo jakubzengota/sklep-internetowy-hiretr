@@ -92,7 +92,15 @@ function ProductDetails() {
                     <Grid item xs={5}>
                         <Paper
                             elevation={3}
-                            className={classes.paperRoot}
+                            style={{
+                                width: "100%",
+                                height: 0,
+                                backgroundImage: `url(${product.images[0].full})`,
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center",
+                                backgroundSize: "cover",
+                                paddingTop: "170%",
+                            }}
                         ></Paper>
                     </Grid>
                     <Grid item xs={7}>

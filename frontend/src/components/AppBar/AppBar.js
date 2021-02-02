@@ -20,9 +20,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 const drawerWidth = 240;
 
@@ -95,10 +95,13 @@ export default function DenseAppBar() {
     };
 
     const handleDrawerClose = (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        if (
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
             return;
-          }
-      
+        }
+
         setOpen(false);
     };
 
@@ -125,37 +128,50 @@ export default function DenseAppBar() {
                     </IconButton>
 
                     {!authenticated && (
+                        <Typography
+                            style={{
+                                fontSize: "15px",
+                                fontFamily: "Cinzel",
+                                fontWeight: 800,
+                                alignItems: "center",
+                            }}
+                        >
+                            <Link
+                                style={{
+                                    textDecoration: "none",
+                                    color: "white",
+                                    paddingRight: "15px",
+                                }}
+                                to="/signin"
+                            >
+                                <PermIdentityIcon></PermIdentityIcon>Zaloguj się
+                            </Link>
+                        </Typography>
+                    )}
                     <Typography
-                                        style={{
-                                            fontSize: "15px",
-                                            fontFamily: "Cinzel",
-                                            fontWeight: 800,
-                                            alignItems: "center",
-                                        }}
-                                    >
-
-              <Link style={{ textDecoration: 'none', color: 'white', paddingRight: '15px'}} to="/signin"><PermIdentityIcon></PermIdentityIcon>Zaloguj się</Link>
-
-          </Typography>    
-     )}
-     <Typography
-     style={{
-        fontSize: "15px",
-        fontFamily: "Cinzel",
-        fontWeight: 800,
-        alignItems: "center",
-    }}>
-        <Link style={{ textDecoration: 'none', color: 'white'}} to="/cart"><ShoppingCartIcon></ShoppingCartIcon>Koszyk</Link>
-     </Typography>
-
-                    
-                     
+                        style={{
+                            fontSize: "15px",
+                            fontFamily: "Cinzel",
+                            fontWeight: 800,
+                            alignItems: "center",
+                        }}
+                    >
+                        <Link
+                            style={{ textDecoration: "none", color: "white" }}
+                            to="/cart"
+                        >
+                            <ShoppingCartIcon></ShoppingCartIcon>Koszyk
+                        </Link>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer
                 className={classes.drawer}
                 anchor="left"
-                variant="temporary" open={open} onEscapeKeyDown={handleDrawerClose} onBackdropClick={handleDrawerClose} 
+                variant="temporary"
+                open={open}
+                onEscapeKeyDown={handleDrawerClose}
+                onBackdropClick={handleDrawerClose}
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -170,18 +186,23 @@ export default function DenseAppBar() {
                     </IconButton>
                 </div>
                 <Divider />
-                <List style={{ fontFamily: "Open Sans Condensed" }}>
-                <ListItem button component={Link} to="/">
-                        <ListItemText primary="Strona główna" />
-                    </ListItem>
-                    <ListItem button component={Link} to="/catalog">
-                        <ListItemText primary="Produkty" />
-                    </ListItem>
-
-                </List>
-                <Divider />
+                <div
+                    role="presentation"
+                    onClick={handleDrawerClose}
+                    onKeyDown={handleDrawerClose}
+                >
+                    <List style={{ fontFamily: "Open Sans Condensed" }}>
+                        <ListItem button component={Link} to="/">
+                            <ListItemText primary="Strona główna" />
+                        </ListItem>
+                        <ListItem button component={Link} to="/catalog">
+                            <ListItemText primary="Produkty" />
+                        </ListItem>
+                    </List>
+                    <Divider />
+                </div>
             </Drawer>
-           
+
             <Grid
                 container
                 direction="column"
