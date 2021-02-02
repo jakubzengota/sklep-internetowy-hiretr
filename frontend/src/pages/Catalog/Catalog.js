@@ -252,7 +252,7 @@ function Catalog() {
                             <Button
                                 color="primary"
                                 fullWidth
-                                variant="contained"
+                                variant="outlined"
                                 component={Link}
                                 to={`/catalog?offset=${offset + pageSize}`}
                                 replace

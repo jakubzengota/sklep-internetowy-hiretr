@@ -20,6 +20,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const drawerWidth = 240;
 
@@ -91,7 +94,11 @@ export default function DenseAppBar() {
         setOpen(true);
     };
 
-    const handleDrawerClose = () => {
+    const handleDrawerClose = (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+          }
+      
         setOpen(false);
     };
 
@@ -116,23 +123,39 @@ export default function DenseAppBar() {
                     >
                         <MenuIcon />
                     </IconButton>
+
+                    {!authenticated && (
                     <Typography
-                        style={{
-                            fontSize: "15px",
-                            fontFamily: "Cinzel",
-                            fontWeight: 800,
-                            alignItems: "center",
-                        }}
-                    >
-                        DARMOWA DOSTAWA | DARMOWY ZWROT
-                    </Typography>
+                                        style={{
+                                            fontSize: "15px",
+                                            fontFamily: "Cinzel",
+                                            fontWeight: 800,
+                                            alignItems: "center",
+                                        }}
+                                    >
+
+              <Link style={{ textDecoration: 'none', color: 'white', paddingRight: '15px'}} to="/signin"><PermIdentityIcon></PermIdentityIcon>Zaloguj się</Link>
+
+          </Typography>    
+     )}
+     <Typography
+     style={{
+        fontSize: "15px",
+        fontFamily: "Cinzel",
+        fontWeight: 800,
+        alignItems: "center",
+    }}>
+        <Link style={{ textDecoration: 'none', color: 'white'}} to="/cart"><ShoppingCartIcon></ShoppingCartIcon>Koszyk</Link>
+     </Typography>
+
+                    
+                     
                 </Toolbar>
             </AppBar>
             <Drawer
                 className={classes.drawer}
-                variant="persistent"
                 anchor="left"
-                open={open}
+                variant="temporary" open={open} onEscapeKeyDown={handleDrawerClose} onBackdropClick={handleDrawerClose} 
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -148,20 +171,17 @@ export default function DenseAppBar() {
                 </div>
                 <Divider />
                 <List style={{ fontFamily: "Open Sans Condensed" }}>
+                <ListItem button component={Link} to="/">
+                        <ListItemText primary="Strona główna" />
+                    </ListItem>
                     <ListItem button component={Link} to="/catalog">
                         <ListItemText primary="Produkty" />
                     </ListItem>
-                    {!authenticated && (
-                        <ListItem button component={Link} to="/signin">
-                            <ListItemText primary="Zaloguj" />
-                        </ListItem>
-                    )}
-                    <ListItem button component={Link} to="/cart">
-                        <ListItemText primary="Koszyk" />
-                    </ListItem>
+
                 </List>
                 <Divider />
             </Drawer>
+           
             <Grid
                 container
                 direction="column"
@@ -175,6 +195,7 @@ export default function DenseAppBar() {
                     style={{ width: "150px" }}
                 ></img>
             </Grid>
+
             <Grid
                 container
                 direction="column"
