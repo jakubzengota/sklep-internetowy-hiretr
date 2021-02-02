@@ -124,7 +124,7 @@ function ProductDetails() {
                                 marginBottom: "25px",
                             }}
                         >
-                            {product.price || ""}
+                            {product.product_cost || ""}
                         </Typography>
                         <p
                             style={{
