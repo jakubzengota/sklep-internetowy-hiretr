@@ -3,12 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { useParams } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
 import ItemList from "./ItemList";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     paperRoot: {
@@ -40,54 +36,24 @@ function Cart() {
                 <div>
                     <Grid container spacing={3}>
                         <Grid item xs={8}>
-                            {/* <div style={{ display: "flex" }}>
-                                <div
-                                    style={{
-                                        height: 160,
-                                        width: 120,
-                                        backgroundColor: "red",
-                                    }}
-                                ></div>
-                                <div style={{ flexGrow: 1, padding: 10 }}>
-                                    <Typography variant="h6">Bluza</Typography>
-                                    <Typography variant="subtitle1">
-                                        Kolor: Beżowy
-                                    </Typography>
-                                    <Typography variant="subtitle1">
-                                        Rozmiar: XL
-                                    </Typography>
-                                    <TextField
-                                        size="small"
-                                        id="standard-number"
-                                        label="Ilość"
-                                        type="number"
-                                        style={{
-                                            width: 80,
-                                        }}
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <IconButton disableRipple>
-                                        <DeleteIcon size="small" />
-                                    </IconButton>
-                                </div>
-                            </div> */}
                             <ItemList />
                         </Grid>
                         <Grid item xs={4}>
                             <Paper variant="outlined" style={{ padding: "2%" }}>
                                 <span style={{ fontSize: "20px" }}>Suma:</span>
                                 <br></br>
-                                <Button
-                                    variant="outlined"
-                                    size="small"
-                                    fullWidth
+                                <Link
+                                    to={"/finalize"}
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    Realizacja zamówienia
-                                </Button>
+                                    <Button
+                                        variant="outlined"
+                                        size="small"
+                                        fullWidth
+                                    >
+                                        Zamawiam
+                                    </Button>
+                                </Link>
                                 <hr></hr>
                                 <div
                                     style={{
@@ -98,10 +64,8 @@ function Cart() {
                                     <h3>DOSTAWA</h3>
                                     Czas dostawy to standardowo 2-3 dni robocze.
                                     <br></br>• Dostawa DHL na adres domowy –
-                                    0,00 PLN<br></br>• Dostawa do paczkomatu
-                                    InPost 24/7 – 0,00 PLN<br></br>• Dostawa
-                                    następnego dnia na adres domowy, 19,90 PLN.
-                                    <br></br>
+                                    0,00 PLN<br></br>• Dostawa następnego dnia
+                                    na adres domowy – 19,90 PLN.<br></br>
                                     <hr></hr>
                                     <p style={{ textAlign: "center" }}>
                                         30 dni na zwrot
