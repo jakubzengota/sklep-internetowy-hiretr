@@ -13,7 +13,8 @@ import Grow from "@material-ui/core/Grow";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-import Cart from "../../components/Cart/Cart";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../../redux/slices/products";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Catalog() {
+    const { productIds, productsById } = useSelector((state) => state.products);
+    const products = productIds.map((id) => productsById[id]);
+    const dispatch = useDispatch();
     const classes = useStyles();
     const [state, setState] = React.useState({
         open: false,
@@ -77,8 +81,14 @@ function Catalog() {
                         }}
                     />
                     <div style={{ padding: 20 }}>
-                    <p style={{fontSize: "13px"}}>{`${name}`}</p>
-                        <p style={{fontFamily: 'Open Sans Condensed', fontWeight: "normal", fontSize:"15px"}}>{`${price}`}</p>
+                        <p style={{ fontSize: "13px" }}>{`${name}`}</p>
+                        <p
+                            style={{
+                                fontFamily: "Open Sans Condensed",
+                                fontWeight: "normal",
+                                fontSize: "15px",
+                            }}
+                        >{`${price}`}</p>
                         <Link
                             to={"/catalog/" + `${id}`}
                             style={{ textDecoration: "none" }}
@@ -100,13 +110,12 @@ function Catalog() {
 
         prevOpen.current = state.open;
     }, [state.open]);
-    React.useEffect(async () => {
-        const response = await fetch("http://localhost:4000/products");
-        const json = await response.json();
-        setState({
-            ...state,
-            products: json.Products,
-        });
+    React.useEffect(() => {
+        async function fetchData() {
+            await dispatch(fetchProducts());
+        }
+        console.log("bla");
+        fetchData();
     }, []);
 
     return (
@@ -204,10 +213,9 @@ function Catalog() {
                                     fontWeight: 800,
                                 }}
                             >
-                                <Cart />
+                                {/* <Cart /> */}
                             </Typography>
                         </Toolbar>
-                        
                     </AppBar>
                 </div>
                 <br></br>
@@ -222,7 +230,7 @@ function Catalog() {
                             margin: "auto",
                         }}
                     >
-                        {state.products.map((product) => (
+                        {products.map((product) => (
                             <ProductCard
                                 style={{ width: "20%" }}
                                 name={product.name}

@@ -2,19 +2,17 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useParams } from "react-router-dom";
-import ProductContainer from "../../containers/ProductContainer";
-import TextField from '@material-ui/core/TextField';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-
-
+import TextField from "@material-ui/core/TextField";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
+import ItemList from "./ItemList";
 
 const useStyles = makeStyles((theme) => ({
     paperRoot: {
-        width: "100%",        
+        width: "100%",
         height: "100%",
     },
     root: {
@@ -35,26 +33,30 @@ function Cart() {
                     backgroundRepeat: "no-repeat",
                 }}
             >
-                <br></br>                
+                <br></br>
             </div>
-            <div style={{ margin: "auto", width: "60%", fontFamily: 'Cinzel'}}>
+            <div style={{ margin: "auto", width: "60%", fontFamily: "Cinzel" }}>
                 <h1>Twój koszyk</h1>
                 <div>
-                    <Grid container spacing={3}>                    
-                        <Grid item xs={8}>  
-                           <div style={{display: "flex",}}>
-                            <div style={{height: 160, width: 120, backgroundColor: "red",}}></div> 
-                            <div style={{flexGrow: 1, padding: 10,}}>
-                                <Typography variant="h6">
-                                    Bluza
-                                </Typography>
-                                <Typography variant="subtitle1">
-                                    Kolor: Beżowy
-                                </Typography>
-                                <Typography variant="subtitle1">
-                                    Rozmiar: XL
-                                </Typography>
-                                <TextField                                        
+                    <Grid container spacing={3}>
+                        <Grid item xs={8}>
+                            {/* <div style={{ display: "flex" }}>
+                                <div
+                                    style={{
+                                        height: 160,
+                                        width: 120,
+                                        backgroundColor: "red",
+                                    }}
+                                ></div>
+                                <div style={{ flexGrow: 1, padding: 10 }}>
+                                    <Typography variant="h6">Bluza</Typography>
+                                    <Typography variant="subtitle1">
+                                        Kolor: Beżowy
+                                    </Typography>
+                                    <Typography variant="subtitle1">
+                                        Rozmiar: XL
+                                    </Typography>
+                                    <TextField
                                         size="small"
                                         id="standard-number"
                                         label="Ilość"
@@ -64,36 +66,48 @@ function Cart() {
                                         }}
                                         InputLabelProps={{
                                             shrink: true,
-                                        }}/>
-                                  
-                                    
-                            </div>
-                            <div>
-                                <IconButton disableRipple >
-                                    <DeleteIcon size="small"/>
-                                </IconButton>
-                            </div>
-                            </div>                        
-                              
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    <IconButton disableRipple>
+                                        <DeleteIcon size="small" />
+                                    </IconButton>
+                                </div>
+                            </div> */}
+                            <ItemList />
                         </Grid>
                         <Grid item xs={4}>
-                            <Paper variant="outlined" style={{padding: '2%'}}>                                                           
-                                <span style={{fontSize: '20px'}}>Suma:</span>
-                                <br></br>                                
-                                <Button variant="outlined" size="small" fullWidth>Realizacja zamówienia</Button>
+                            <Paper variant="outlined" style={{ padding: "2%" }}>
+                                <span style={{ fontSize: "20px" }}>Suma:</span>
+                                <br></br>
+                                <Button
+                                    variant="outlined"
+                                    size="small"
+                                    fullWidth
+                                >
+                                    Realizacja zamówienia
+                                </Button>
                                 <hr></hr>
-                                <div style={{fontFamily: 'Open Sans Condensed', fontSize: '20px'}}>
+                                <div
+                                    style={{
+                                        fontFamily: "Open Sans Condensed",
+                                        fontSize: "20px",
+                                    }}
+                                >
                                     <h3>DOSTAWA</h3>
-                                        Czas dostawy to standardowo 2-3 dni robocze.<br></br>
-                                        • Dostawa DHL na adres domowy – 0,00 PLN<br></br>
-                                        • Dostawa do paczkomatu InPost 24/7 – 0,00 PLN<br></br>
-                                        • Dostawa następnego dnia na adres domowy, 19,90 PLN.<br></br>
+                                    Czas dostawy to standardowo 2-3 dni robocze.
+                                    <br></br>• Dostawa DHL na adres domowy –
+                                    0,00 PLN<br></br>• Dostawa do paczkomatu
+                                    InPost 24/7 – 0,00 PLN<br></br>• Dostawa
+                                    następnego dnia na adres domowy, 19,90 PLN.
+                                    <br></br>
                                     <hr></hr>
-                                    <p style={{textAlign: 'center'}}>
+                                    <p style={{ textAlign: "center" }}>
                                         30 dni na zwrot
-                                    </p>                                    
-                                </div>                                                                                                                         
-                            </Paper>  
+                                    </p>
+                                </div>
+                            </Paper>
                         </Grid>
                     </Grid>
                 </div>
