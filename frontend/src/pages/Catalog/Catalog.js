@@ -15,6 +15,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/slices/products";
+import ProductList from "./ProductList";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -40,8 +41,6 @@ function Catalog() {
     if (isNaN(offset) || offset < 0) {
         offset = 0;
     }
-    const { productIds, productsById } = useSelector((state) => state.products);
-    const products = productIds.map((id) => productsById[id]);
     const dispatch = useDispatch();
     const classes = useStyles();
     const [state, setState] = React.useState({
@@ -76,40 +75,6 @@ function Catalog() {
     }
 
     const anchorRef = React.useRef(null);
-    function ProductCard({ name, price, id, image }) {
-        return (
-            <Grid item xs={4} md={3}>
-                <Paper className={classes.paper2}>
-                    <div
-                        style={{
-                            width: "100%",
-                            paddingTop: "150%",
-                            backgroundImage: `url(${image})`,
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "cover",
-                        }}
-                    />
-                    <div style={{ padding: 20 }}>
-                        <p style={{ fontSize: "13px" }}>{`${name}`}</p>
-                        <p
-                            style={{
-                                fontFamily: "Open Sans Condensed",
-                                fontWeight: "normal",
-                                fontSize: "15px",
-                            }}
-                        >{`${price}`}</p>
-                        <Link
-                            to={"/catalog/" + `${id}`}
-                            style={{ textDecoration: "none" }}
-                        >
-                            <Button variant="outlined">Zobacz</Button>
-                        </Link>
-                    </div>
-                </Paper>
-            </Grid>
-        );
-    }
 
     // return focus to the button when we transitioned from !state.open -> state.open
     const prevOpen = React.useRef(state.open);
@@ -239,15 +204,7 @@ function Catalog() {
                             margin: "auto",
                         }}
                     >
-                        {products.map((product) => (
-                            <ProductCard
-                                style={{ width: "20%" }}
-                                name={product.name}
-                                price={product.product_cost}
-                                id={product.id}
-                                image={product.images[0].medium}
-                            />
-                        ))}
+                        <ProductList />
                         <Grid item xs={12}>
                             <Button
                                 color="primary"

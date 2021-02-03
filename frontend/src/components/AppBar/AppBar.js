@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import "./AppBar.css";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -16,13 +15,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import Button from "@material-ui/core/Button";
+import Badge from "@material-ui/core/Badge";
+
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
 
@@ -88,6 +88,7 @@ export default function DenseAppBar() {
     const authenticated = false;
     const classes = useStyles();
     const theme = useTheme();
+    const cartItemsCount = useSelector((state) => state.cart.itemIds.length);
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {
@@ -126,43 +127,32 @@ export default function DenseAppBar() {
                     >
                         <MenuIcon />
                     </IconButton>
-
+                    <div style={{ flexGrow: 1 }} />
                     {!authenticated && (
-                        <Typography
-                            style={{
-                                fontSize: "15px",
-                                fontFamily: "Cinzel",
-                                fontWeight: 800,
-                                alignItems: "center",
-                            }}
+                        <Button
+                            component={Link}
+                            to="/signin"
+                            startIcon={<PermIdentityIcon />}
+                            color="white"
                         >
-                            <Link
-                                style={{
-                                    textDecoration: "none",
-                                    color: "white",
-                                    paddingRight: "15px",
-                                }}
-                                to="/signin"
-                            >
-                                <PermIdentityIcon></PermIdentityIcon>Zaloguj się
-                            </Link>
-                        </Typography>
+                            Zaloguj się
+                        </Button>
                     )}
-                    <Typography
-                        style={{
-                            fontSize: "15px",
-                            fontFamily: "Cinzel",
-                            fontWeight: 800,
-                            alignItems: "center",
-                        }}
+                    <Button
+                        component={Link}
+                        to="/cart"
+                        startIcon={
+                            <Badge
+                                badgeContent={cartItemsCount}
+                                color="secondary"
+                            >
+                                <ShoppingCartIcon />
+                            </Badge>
+                        }
+                        color="white"
                     >
-                        <Link
-                            style={{ textDecoration: "none", color: "white" }}
-                            to="/cart"
-                        >
-                            <ShoppingCartIcon></ShoppingCartIcon>Koszyk
-                        </Link>
-                    </Typography>
+                        Koszyk
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -216,19 +206,6 @@ export default function DenseAppBar() {
                     style={{ width: "150px" }}
                 ></img>
             </Grid>
-
-            <Grid
-                container
-                direction="column"
-                justify="space-between"
-                alignItems="center"
-                style={{
-                    fontSize: "20px",
-                    fontFamily: "Cinzel",
-                    fontWeight: 800,
-                    paddingBottom: "10px",
-                }}
-            ></Grid>
         </div>
     );
 }
