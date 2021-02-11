@@ -9,8 +9,13 @@ import scrapy
 class ProductItem(scrapy.Item):
     price_pln = scrapy.Field()
     name = scrapy.Field()
-    color = scrapy.Field()
     image_urls = scrapy.Field()
     images = scrapy.Field()
     description = scrapy.Field()
     product_number = scrapy.Field()
+    hm_url = scrapy.Field()
+
+
+class ColorItem(scrapy.Item):
+    color = scrapy.Field()
+    product_urls = scrapy.Field()

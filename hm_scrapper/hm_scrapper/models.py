@@ -4,6 +4,7 @@ from sqlalchemy import (Integer, String, Text, Numeric)
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import backref, relationship
 from scrapy.utils.project import get_project_settings
+from sqlalchemy.dialects import postgresql
 
 Base = declarative_base()
 
@@ -24,6 +25,7 @@ class Product(Base):
     color = Column('color', String(30))
     standard_cost = Column('product_cost', Numeric)
     description = Column('description', Text())
+    hm_url = Column('hm_url', String(100))
     images = relationship('Image', backref='product')
 
 
