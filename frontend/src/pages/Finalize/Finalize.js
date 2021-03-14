@@ -163,12 +163,12 @@ function Finalize() {
                         onChange={formik.handleChange}
                     />
                 </div>
-                <h1>Dodaj notatkę do zamówienia</h1>
+                <h1>Dodaj komentarz do zamówienia</h1>
                 <TextField
                         variant="outlined"
                         required
                         name="notes"
-                        label="Notatka"
+                        label="Komentarz"
                         type="text"
                         id="notes"
                         value={formik.values.notes}
