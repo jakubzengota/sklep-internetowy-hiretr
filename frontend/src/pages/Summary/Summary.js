@@ -17,6 +17,7 @@ function Summary() {
         apratmentNumber,
         city,
         postalCode,
+        notes
     } = location.state;
     console.log(location.state);
     return (
@@ -51,8 +52,18 @@ function Summary() {
                         {`${street} ${houseNumber} ${apratmentNumber}`}
                         <br></br>
                         {`${city} ${postalCode}`}
-                        <br></br>
+                        <br></br>                        
                     </div>
+                    <h3>Komentarz do zamówienia</h3>
+                    <div
+                        style={{
+                            fontFamily: "Open Sans Condensed",
+                            fontSize: "20px",
+                        }}
+                    >
+                        {`${notes}`}                       
+                    </div>
+                    
                 </div>
                 <br></br>
                 <div>

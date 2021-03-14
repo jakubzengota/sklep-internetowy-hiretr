@@ -25,6 +25,7 @@ function Finalize() {
             apratmentNumber: "",
             city: "",
             postalCode: "",
+            notes: "",
         },
     });
 
@@ -162,6 +163,18 @@ function Finalize() {
                         onChange={formik.handleChange}
                     />
                 </div>
+                <h1>Dodaj notatkę do zamówienia</h1>
+                <TextField
+                        variant="outlined"
+                        required
+                        name="notes"
+                        label="Notatka"
+                        type="text"
+                        id="notes"
+                        value={formik.values.notes}
+                        onChange={formik.handleChange}
+                        fullWidth={true}
+                />
                 <h1>Sposób dostawy</h1>
                 <div>
                     <FormControlLabel
