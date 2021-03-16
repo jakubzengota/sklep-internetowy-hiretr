@@ -20,14 +20,16 @@ const useStyles = makeStyles((theme) => ({
 function Cart() {
     const classes = useStyles();
 
-    const sum = useSelector(
-        (state) =>
+    const sum = useSelector((state) =>
+        (
             state.cart.itemIds.reduce(
                 (acc, id) =>
                     state.cart.itemsById[id].product.product_cost *
-                    state.cart.itemsById[id].quantity,
+                        state.cart.itemsById[id].quantity +
+                    acc,
                 0
             ) + 20
+        ).toFixed(2)
     );
     return (
         <React.Fragment>
