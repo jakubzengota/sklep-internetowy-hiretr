@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ItemList from "./ItemList";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     paperRoot: {
@@ -18,6 +19,15 @@ const useStyles = makeStyles((theme) => ({
 
 function Cart() {
     const classes = useStyles();
+    const sum = useSelector(
+        (state) =>
+            state.cart.itemIds.reduce(
+                (acc, id) =>
+                    state.cart.itemsById[id].product.product_cost *
+                    state.cart.itemsById[id].quantity,
+                0
+            ) + 20
+    );
     return (
         <React.Fragment>
             <div
@@ -40,7 +50,9 @@ function Cart() {
                         </Grid>
                         <Grid item xs={4}>
                             <Paper variant="outlined" style={{ padding: "2%" }}>
-                                <span style={{ fontSize: "20px" }}>Suma:</span>
+                                <span
+                                    style={{ fontSize: "20px" }}
+                                >{`Suma: ${sum}`}</span>
                                 <br></br>
                                 <Link
                                     to={"/finalize"}
