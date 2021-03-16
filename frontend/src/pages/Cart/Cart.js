@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Cart() {
     const classes = useStyles();
+
     const sum = useSelector(
         (state) =>
             state.cart.itemIds.reduce(
