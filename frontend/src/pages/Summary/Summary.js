@@ -17,7 +17,7 @@ function Summary() {
         apratmentNumber,
         city,
         postalCode,
-        notes
+        notes,
     } = location.state;
     console.log(location.state);
     return (
@@ -52,7 +52,7 @@ function Summary() {
                         {`${street} ${houseNumber} ${apratmentNumber}`}
                         <br></br>
                         {`${city} ${postalCode}`}
-                        <br></br>                        
+                        <br></br>
                     </div>
                     <h3>Komentarz do zamówienia</h3>
                     <div
@@ -61,9 +61,8 @@ function Summary() {
                             fontSize: "20px",
                         }}
                     >
-                        {`${notes}`}                       
+                        {`${notes}`}
                     </div>
-                    
                 </div>
                 <br></br>
                 <div>
@@ -122,7 +121,13 @@ function Summary() {
                 <hr></hr>
                 <h2>Do zapłaty: 59,99 PLN</h2>
                 <br></br>
-                <Link to={"/payment"} style={{ textDecoration: "none" }}>
+                <Link
+                    to={{
+                        pathname: "/payment",
+                        state: location.state,
+                    }}
+                    style={{ textDecoration: "none" }}
+                >
                     <Button variant="outlined">Zapłać</Button>
                 </Link>
                 <br></br>

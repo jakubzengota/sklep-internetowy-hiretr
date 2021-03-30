@@ -1,8 +1,70 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { useSelector } from "react-redux";
 
 function Payment() {
+    const products = useSelector((state) =>
+        state.cart.itemIds.map((id) => ({
+            productId: state.cart.itemsById[id].product.id,
+            size: state.cart.itemsById[id].size,
+            quantity: state.cart.itemsById[id].size,
+        }))
+    );
+    const sum = useSelector((state) =>
+        (
+            state.cart.itemIds.reduce(
+                (acc, id) =>
+                    state.cart.itemsById[id].product.product_cost *
+                        state.cart.itemsById[id].quantity +
+                    acc,
+                0
+            ) + 20
+        ).toFixed(2)
+    );
+    const location = useLocation();
+    const {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        street,
+        houseNumber,
+        apratmentNumber,
+        city,
+        postalCode,
+        notes,
+    } = location.state;
+    React.useEffect(() => {
+        const placeOrder = async () => {
+            await fetch("http://localhost:4000/orders/place", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    price_pln: sum,
+                    customer: {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        phone: phoneNumber,
+                    },
+                    address: {
+                        street: street,
+                        houseNumber: houseNumber,
+                        postCode: postalCode,
+                        apartmentNumber: apratmentNumber,
+                        city: city,
+                    },
+                    products: products,
+                }),
+            });
+        };
+        placeOrder();
+    }, []);
+
     return (
         <React.Fragment>
             <div
