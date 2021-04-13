@@ -3,7 +3,8 @@ import { getProducts, getProductById } from "../controllers/product";
 
 const router = Router({ mergeParams: true });
 
-router.use("/", getProducts);
 router.get("/:productId", getProductById);
+router.use("/", getProducts);
+
 
 export default router;

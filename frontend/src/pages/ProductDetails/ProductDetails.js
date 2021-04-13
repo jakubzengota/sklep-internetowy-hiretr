@@ -95,7 +95,7 @@ function ProductDetails() {
                             style={{
                                 width: "100%",
                                 height: 0,
-                                backgroundImage: `url(${product.images[0].full})`,
+                                backgroundImage: `url(${product.images && product.images[0].full})`,
                                 backgroundRepeat: "no-repeat",
                                 backgroundPosition: "center",
                                 backgroundSize: "cover",
