@@ -3,6 +3,9 @@ import './Home.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from "react-router-dom";
+import one from './img/one.jpg';
+import two from './img/two.jpg';
+import three from './img/three.jpg';
 
 
 
@@ -18,16 +21,16 @@ function Home() {
             showThumbs={false}
             >
                 <div> 
-                    <img src="https://lp2.hm.com/hmgoepprod?set=width[1280],quality[80],options[limit]&source=url[https://www2.hm.com/content/dam/ladies_s03/january_2021/6091/launch-teasers/6091-3x2-Women-3-simone-rocha-hm-designer-collaboration-2021.jpg]&scale=width[global.width],height[15000],options[global.options]&sink=format[jpg],quality[global.quality]" />
-                    <p className="legend">Nowość</p>
+                    <img  src={one} width="300" height="800"/>
+                    <Link className="legend" to="/catalog/401" style={{ textDecoration: 'none' }}>Bluza Relaxed Fit</Link>
                 </div>
                 <div>
-                    <img src="https://lp2.hm.com/hmgoepprod?set=width[1280],quality[80],options[limit]&source=url[https://www2.hm.com/content/dam/ladies_s03/february_2021/1423a/1423A-3x2-make-every-occasion-special-2.jpg]&scale=width[global.width],height[15000],options[global.options]&sink=format[jpg],quality[global.quality]" />
-                    <p className="legend">Nowość</p>
+                    <img src={two} width="300" height="800"/>
+                    <Link className="legend" to="/catalog/525" style={{ textDecoration: 'none' }}>Bluza z kapturem</Link>
                 </div>
                 <div>
-                    <img src="https://lp2.hm.com/hmgoepprod?set=width[1280],quality[80],options[limit]&source=url[https://www2.hm.com/content/dam/ladies_s03/mars_2021/1103a/1103A-3x2-copy-2-spring-of-natural-innovations.jpg]&scale=width[global.width],height[15000],options[global.options]&sink=format[jpg],quality[global.quality]" />
-                    <p className="legend">Nowość</p>
+                    <img src={three} width="300" height="800"/>
+                    <Link className="legend" to="/catalog/526" style={{ textDecoration: 'none' }}>Bluza z kapturem i z nadrukiem</Link>
                 </div>
             </Carousel>
         </div>
