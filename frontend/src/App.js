@@ -10,6 +10,7 @@ import EmailVerification from "./pages/EmailVerification";
 import Catalog from "./pages/Catalog";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import Finalize from "./pages/Finalize";
 import Summary from "./pages/Summary";
 import Payment from "./pages/Payment";
@@ -46,6 +47,9 @@ function App() {
                 </Route>
                 <Route path="/cart">
                     <Cart />
+                </Route>
+                <Route path="/checkout">
+                    <Checkout />
                 </Route>
                 <Route path="/finalize">
                     <Finalize />
