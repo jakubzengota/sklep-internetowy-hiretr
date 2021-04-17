@@ -34,7 +34,10 @@ function Contact() {
                 <div>
                     <Grid container spacing={3}>
                         <Grid item xs={8}>
-                            
+                            <img 
+                            src="https://i.imgur.com/w0dGWHe.png"
+                            onClick={()=> window.open("https://www.google.com/maps/dir//Gmina+Rak%C3%B3w/@50.6908169,20.8394487,11z/data=!4m9!4m8!1m0!1m5!1m1!1s0x4717f16b8f5915c1:0xe83b515210b952ab!2m2!1d20.8880567!2d50.6955296!3e1?hl=en-GB", "_blank")}
+                            />
                         </Grid>
                         <Grid item xs={4}>
                             <Paper variant="outlined" style={{ padding: "4%", height: 430 }}>                                
