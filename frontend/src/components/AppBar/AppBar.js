@@ -188,6 +188,9 @@ export default function DenseAppBar() {
                         <ListItem button component={Link} to="/catalog">
                             <ListItemText primary="Produkty" />
                         </ListItem>
+                        <ListItem button component={Link} to="/contact">
+                            <ListItemText primary="Kontakt" />
+                        </ListItem>
                     </List>
                     <Divider />
                 </div>

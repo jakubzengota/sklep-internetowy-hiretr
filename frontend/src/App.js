@@ -13,6 +13,7 @@ import Cart from "./pages/Cart";
 import Finalize from "./pages/Finalize";
 import Summary from "./pages/Summary";
 import Payment from "./pages/Payment";
+import Contact from "./pages/Contact";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,6 +41,9 @@ function App() {
                 </Route>
                 <Route exact path="/catalog">
                     <Catalog />
+                </Route>
+                <Route exact path="/contact">
+                    <Contact />
                 </Route>
                 <Route path="/catalog/:id">
                     <ProductDetails />
