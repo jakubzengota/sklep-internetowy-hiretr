@@ -58,7 +58,7 @@ function Cart() {
                                 >{`Suma: ${sum}`}</span>
                                 <br></br>
                                 <Link
-                                    to={"/checkout"}
+                                    to={"/finalize"}
                                     style={{ textDecoration: "none" }}
                                 >
                                     <Button
