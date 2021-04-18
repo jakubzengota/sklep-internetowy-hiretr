@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 function Payment() {
     const products = useSelector((state) =>
         state.cart.itemIds.map((id) => ({
-            productId: state.cart.itemsById[id].product.id,
+            product: state.cart.itemsById[id].product,
             size: state.cart.itemsById[id].size,
-            quantity: state.cart.itemsById[id].size,
+            quantity: state.cart.itemsById[id].quantity,
         }))
     );
     const sum = useSelector((state) =>

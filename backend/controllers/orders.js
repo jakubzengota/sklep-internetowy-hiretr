@@ -3,11 +3,32 @@ import models from "../models";
 
 const Product = models.Product;
 
-const orderEmail = (products) => ({
+const orderEmail = ({ price, customer, products, address }) => ({
     subject: "React Confirm Email",
     html: `
         <html>
-            ${products.map((p) => `<div>${p.id}</div>`)}
+            <div>cena: ${price}</div>
+            <br/>
+            <div>klient</div>
+            <div>imie: ${customer.firstName}</div>
+            <div>nazwisko: ${customer.lastName}</div>
+            <div>email: ${customer.email}</div>
+            <div>numer telefonu: ${customer.phone}</div>
+            <br/>
+            <div>adres</div>
+            <div>Ulica: ${address.street}</div>
+            <div>numer domu: ${address.houseNumber}</div>
+            <div>kod pocztowy: ${address.postCode}</div>
+            <div>miasto: ${address.city}</div>
+            <br/>
+            <div>produkty</div>
+            ${products.map(
+                (p) => `
+                <div>Nazwa: ${p.product.name}</div>
+                <div>Ilość: ${p.quantity}</div>
+                <div>Rozmiar: ${p.size}</div>
+            `
+            )}
         </html>
     `,
 });
@@ -38,10 +59,16 @@ const sendEmail = async (to, content) => {
 };
 
 export const placeOrder = async (req, res, next) => {
-    const products = await Promise.all(
-        req.body.products.map((p) => Product.findByPk(p.productId))
+    console.log(req.body);
+    await sendEmail(
+        req.body.customer.email,
+        orderEmail({
+            price: req.body.price_pln,
+            customer: req.body.customer,
+            address: req.body.address,
+            products: req.body.products,
+        })
     );
-    await sendEmail(req.body.customer.email, orderEmail(products));
     res.status(200).send();
     // res.send(req.body);
 };

@@ -17,7 +17,7 @@ export const getProducts = memoize(async ({ offset, limit }) => {
     return json.products;
 });
 //
-export const getProductById = memoize(async (productId) => {
+export const getProductById = (async (productId) => {
     const response = await fetch(`http://localhost:4000/products/${productId}`);
     const json = await response.json();
     return json.product;
