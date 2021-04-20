@@ -356,11 +356,9 @@ a[x-apple-data-detectors] {
                       <td align="right" style="padding:0;Margin:0"><span style="color:#19857B"></span> 
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="right" role="presentation"> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Subtotal (${
-                              products.length
-                          }):</td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Subtotal :</td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">${
-                              price + " zł"
+                              price - 20 + " zł"
                           }</td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
