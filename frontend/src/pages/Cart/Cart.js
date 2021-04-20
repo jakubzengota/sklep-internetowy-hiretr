@@ -55,7 +55,7 @@ function Cart() {
                             <Paper variant="outlined" style={{ padding: "2%" }}>
                                 <span
                                     style={{ fontSize: "20px" }}
-                                >{`Suma: ${sum}`}</span>
+                                >{`Suma: ${sum} zł`}</span>
                                 <br></br>
                                 <Link
                                     to={"/finalize"}
