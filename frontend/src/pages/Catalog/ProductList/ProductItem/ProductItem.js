@@ -36,7 +36,7 @@ export default function CartItem({ productId }) {
                             fontSize: "15px",
                         }}
                     >
-                        {`${product.product_cost}`}
+                        {`${product.product_cost} zł`}
                     </p>
                     <Link
                         to={"/catalog/" + `${productId}`}
