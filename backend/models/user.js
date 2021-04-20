@@ -14,13 +14,6 @@ export default (sequelize, DataTypes) => {
     const User = sequelize.define(
         "User",
         {
-            userId: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                primaryKey: true,
-                autoIncrement: true,
-                field: "user_id",
-            },
             email: {
                 type: DataTypes.STRING(30),
                 allowNull: false,
