@@ -365,7 +365,7 @@ a[x-apple-data-detectors] {
                          </tr> 
                          <tr style="border-collapse:collapse"> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Flat-rate Shipping:</td> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#008080"><strong>FREE</strong></td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#008080"><strong>20 zł</strong></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Discount:</td> 
