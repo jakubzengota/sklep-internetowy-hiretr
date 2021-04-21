@@ -31,7 +31,7 @@ function Contact() {
     return (
         <React.Fragment>
             <div style={{marginTop: '1%'}}>
-                <img src="https://i.imgur.com/362Mt0H.png"/>
+                <img style={{width: '100%'}} src="https://i.imgur.com/362Mt0H.png"/>
             </div>
             <div style={{ margin: "auto", width: "60%", fontFamily: "Cinzel", paddingBottom: '5%' }}>                
                 <h1>Kontakt</h1>
