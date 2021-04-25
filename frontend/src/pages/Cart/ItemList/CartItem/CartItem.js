@@ -12,14 +12,26 @@ export default function CartItem({ itemId }) {
     const handleDeleteClick = () => {
         dispatch(removeItem({ itemId }));
     };
-    const handleQuantityChange = (event) => {
-        dispatch(
-            changeQuantity({
-                itemId,
-                quantity: event.target.value,
-            })
-        );
-    };
+    const handleQuantityChange = (event) => {        
+        event.target.value < 0
+            ? event.target.value = 1
+            : (dispatch(
+                changeQuantity({
+                    itemId,
+                    quantity: event.target.value,
+                })                
+            ))   
+    }
+    const handleEmpty = (event) => {
+        if (event.target.value == 0){
+            dispatch(
+                changeQuantity({
+                    itemId,
+                    quantity: 1,
+                })                
+            )
+        }
+    }
     return (
         <div style={{ display: "flex" }}>
             <div
@@ -45,7 +57,9 @@ export default function CartItem({ itemId }) {
                     }}
                     value={item.quantity}
                     onChange={handleQuantityChange}
+                    defaultValue={item.quantity}
                     InputProps={{ inputProps: { min: "1" }}}
+                    onBlur={handleEmpty}
                 />
             </div>
             <div>
