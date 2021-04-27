@@ -15,6 +15,7 @@ import Finalize from "./pages/Finalize";
 import Summary from "./pages/Summary";
 import Payment from "./pages/Payment";
 import Contact from "./pages/Contact";
+import Account from "./pages/Account";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -63,6 +64,9 @@ function App() {
                 </Route>
                 <Route path="/payment">
                     <Payment />
+                </Route>
+                <Route path="/account">
+                    <Account />
                 </Route>
             </Switch>
         </div>

@@ -136,7 +136,7 @@ export default function DenseAppBar() {
                             color="white"
                         >
                             Zaloguj się
-                        </Button>
+                        </Button>                        
                     )}
                     <Button
                         component={Link}
@@ -152,7 +152,7 @@ export default function DenseAppBar() {
                         color="white"
                     >
                         Koszyk
-                    </Button>
+                    </Button>                    
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -190,6 +190,9 @@ export default function DenseAppBar() {
                         </ListItem>
                         <ListItem button component={Link} to="/contact">
                             <ListItemText primary="Kontakt" />
+                        </ListItem>
+                        <ListItem button component={Link} to="/account">
+                            <ListItemText primary="Konto" />
                         </ListItem>
                     </List>
                     <Divider />
