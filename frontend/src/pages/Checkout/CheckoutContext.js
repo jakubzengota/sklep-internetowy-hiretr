@@ -33,7 +33,7 @@ const initialState = {
             cost: 19.9,
         },
     ],
-    payment: ["Szybkie płatności", "karta", "przelew tradycyjny"],
+    payment: ["Szybkie płatności"],
 };
 
 export default React.createContext(initialState);
