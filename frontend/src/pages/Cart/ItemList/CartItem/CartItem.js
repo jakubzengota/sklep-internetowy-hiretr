@@ -20,17 +20,39 @@ export default function CartItem({ itemId }) {
                     itemId,
                     quantity: event.target.value,
                 })                
-            ))   
+            ))
     }
-    const handleEmpty = (event) => {
-        if (event.target.value == 0){
-            dispatch(
+    const handleEmpty = (event) => {        
+        console.log(event.target.value.charAt(0));
+        if (event.target.value.charAt(0) == 0 || Math.round(event.target.value) == 0 || event.target.value % 2 != 0) {
+                dispatch(
                 changeQuantity({
                     itemId,
                     quantity: 1,
-                })                
-            )
-        }
+                }))   
+            if (event.target.value % 2 != 0) {                
+                let val = event.target.value;
+                if (Math.round(val) == 0) {
+                    dispatch(
+                    changeQuantity({
+                        itemId,
+                        quantity: 1,
+                    }))
+                } else {
+                    dispatch(
+                    changeQuantity({
+                        itemId,
+                        quantity: Math.round(event.target.value),
+                    }))
+                }
+            } 
+        } else {          
+            dispatch(
+            changeQuantity({
+                itemId,
+                quantity: event.target.value,
+            })                
+        )}
     }
     return (
         <div style={{ display: "flex" }}>
