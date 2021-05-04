@@ -30,7 +30,7 @@ function PaymentField({ name, fieldName }) {
 }
 
 function ShippingField({ fieldName, shipping }) {
-    const { id, name, description, cost } = shipping;
+    const { id, name, description, cost} = shipping;
     const [field, meta, helpers] = useField(fieldName);
     const { value } = meta;
     const { setValue } = helpers;
@@ -47,7 +47,7 @@ function ShippingField({ fieldName, shipping }) {
             </ListItemIcon>
             <ListItemText primary={name} secondary={description} />
             <ListItemSecondaryAction>
-                <Typography variant="subtitle1">{cost}</Typography>
+                <Typography variant="subtitle1">{cost.toString().replace(".",",") + " PLN"}</Typography>
                 <Typography>{meta.touched && meta.error}</Typography>
             </ListItemSecondaryAction>
         </ListItem>

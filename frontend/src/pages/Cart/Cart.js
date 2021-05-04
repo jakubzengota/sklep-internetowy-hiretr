@@ -35,13 +35,11 @@ function Cart() {
         <React.Fragment>
             <div
                 style={{
-                    backgroundImage:
-                        "url(" + "https://i.imgur.com/6XhoraV.png" + ")",
+                    backgroundImage:"url(" + "https://i.imgur.com/6XhoraV.png" + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
-                }}
-            >
+                }}>
                 <br></br>
             </div>
             <div style={{ margin: "auto", width: "60%", fontFamily: "Cinzel" }}>
@@ -55,7 +53,7 @@ function Cart() {
                             <Paper variant="outlined" style={{ padding: "2%" }}>
                                 <span
                                     style={{ fontSize: "20px" }}
-                                >{`Suma: ${sum} zł`}</span>
+                                >{`Suma: ${sum} PLN`}</span>
                                 <br></br>
                                 <Link
                                     to={"/checkout"}
@@ -74,8 +72,7 @@ function Cart() {
                                     style={{
                                         fontFamily: "Open Sans Condensed",
                                         fontSize: "20px",
-                                    }}
-                                >
+                                    }}>
                                     <h3>DOSTAWA</h3>
                                     Czas dostawy to standardowo 2-3 dni robocze.
                                     <br></br>• Dostawa DHL na adres domowy –
