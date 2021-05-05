@@ -117,7 +117,33 @@ export default function Checkout() {
         if (activeStep === steps.length - 1) {
             const submit = async (values, actions) => {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
-                alert(JSON.stringify(values, null, 2));
+
+                await fetch("http://localhost:4000/orders/checkout", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    price_pln: sum,
+                    customer: {
+                        firstName: firstName,//
+                        lastName: lastName,//
+                        email: email,
+                        phone: phoneNumber,
+                    },
+                    address: {
+                        street: address1,//
+                        houseNumber: address2,//
+                        postCode: zip,//
+                        apartmentNumber: apratmentNumber,
+                        city: city,//
+                    },
+                    products: products,
+                }),
+            });
+
+                // alert(JSON.stringify(values, null, 2));
                 actions.setSubmitting(false);
                 setActiveStep(activeStep + 1);
             };
