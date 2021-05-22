@@ -28,7 +28,7 @@ function Cart() {
                         state.cart.itemsById[id].quantity +
                     acc,
                 0
-            ) + 20
+            )
         ).toFixed(2)
     );
     return (
@@ -67,18 +67,11 @@ function Cart() {
                                         Zamawiam
                                     </Button>
                                 </Link>
-                                <hr></hr>
                                 <div
                                     style={{
                                         fontFamily: "Open Sans Condensed",
                                         fontSize: "20px",
                                     }}>
-                                    <h3>DOSTAWA</h3>
-                                    Czas dostawy to standardowo 2-3 dni robocze.
-                                    <br></br>• Dostawa DHL na adres domowy –
-                                    0,00 PLN<br></br>• Dostawa następnego dnia
-                                    na adres domowy – 19,90 PLN.<br></br>
-                                    <hr></hr>
                                     <p style={{ textAlign: "center" }}>
                                         30 dni na zwrot
                                     </p>
