@@ -58,6 +58,17 @@ export default function AddressForm() {
                 <Grid item xs={12}>
                     <TextField
                         required
+                        id="email"
+                        name="email"
+                        fieldName="email"
+                        label="Email"
+                        fullWidth
+                        autoComplete="email"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        required
                         id="address1"
                         name="address1"
                         fieldName="address1"
