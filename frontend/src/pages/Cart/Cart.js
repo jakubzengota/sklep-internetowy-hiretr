@@ -53,7 +53,7 @@ function Cart() {
                             <Paper variant="outlined" style={{ padding: "2%" }}>
                                 <span
                                     style={{ fontSize: "20px" }}
-                                >{`Suma: ${sum} PLN`}</span>
+                                >{`Suma: ${sum.replace(".",",")} PLN`}</span>
                                 <br></br>
                                 <Link
                                     to={"/checkout"}

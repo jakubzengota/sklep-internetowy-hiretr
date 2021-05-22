@@ -65,7 +65,7 @@ export default function CartItem({ itemId }) {
             ></div>
             <div style={{ flexGrow: 1, padding: 10 }}>
                 <Typography variant="h6">{item.product.name}</Typography>
-                <Typography variant="subtitle1">{item.product.id}</Typography>
+                <Typography variant="subtitle1">{item.product.product_cost.replace(".",",") + " PLN"}</Typography>
                 <Typography variant="subtitle1">
                     {`Rozmiar: ${item.size}`}
                 </Typography>
