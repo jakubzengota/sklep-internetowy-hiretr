@@ -17,6 +17,7 @@ import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useFormik, Formik, Form } from "formik";
+import { useSelector } from "react-redux";
 import * as yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
@@ -82,6 +83,7 @@ const validationSchema = [
 const initialValues = {
     firstName: "",
     lastName: "",
+    email: "",
     address1: "",
     address2: "",
     city: "",
@@ -113,37 +115,32 @@ export default function Checkout() {
     const handleBack = () => {
         setActiveStep(activeStep - 1);
     };
+    const products = useSelector((state) =>
+        state.cart.itemIds.map((id) => state.cart.itemsById[id])
+    );
     const handleSubmit = (values, actions) => {
         if (activeStep === steps.length - 1) {
             const submit = async (values, actions) => {
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-
-            //     await fetch("http://localhost:4000/orders/checkout", {
-            //     method: "POST",
-            //     mode: "cors",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         price_pln: sum,
-            //         customer: {
-            //             firstName: firstName,//
-            //             lastName: lastName,//
-            //             email: email,
-            //             phone: phoneNumber,
-            //         },
-            //         address: {
-            //             street: address1,//
-            //             houseNumber: address2,//
-            //             postCode: zip,//
-            //             apartmentNumber: apratmentNumber,
-            //             city: city,//
-            //         },
-            //         products: products,
-            //     }),
-            // });
-
-                // alert(JSON.stringify(values, null, 2));
+                await fetch("http://localhost:4000/orders/place", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        products,
+                        address: {
+                            street: values.address1,
+                            city: values.city,
+                            postalCode: values.zip,
+                        },
+                        customer: {
+                            firstName: values.firstName,
+                            lastName: values.lastName,
+                            email: values.email,
+                        },
+                        price_pln: 50,
+                    }),
+                });
                 actions.setSubmitting(false);
                 setActiveStep(activeStep + 1);
             };
