@@ -6,6 +6,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import { useFormikContext } from "formik";
+import { useSelector } from "react-redux";
 import CheckoutContext from "./CheckoutContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,10 +25,16 @@ const priceToPLN = (price) => price.toFixed(2).replace(".", ",").concat(" PLN");
 
 export default function Review() {
     const classes = useStyles();
-    const { products, shipping } = React.useContext(CheckoutContext);
+    const { shipping } = React.useContext(CheckoutContext);
+    const products = useSelector((state) =>
+        state.cart.itemIds.map((id) => state.cart.itemsById[id])
+    );
     const { values } = useFormikContext();
     const s = shipping.find((s) => s.id === values.shippingId);
-    const productCost = products.reduce((acc, val) => (acc += val.price), 0);
+    const productCost = products.reduce(
+        (acc, val) => (acc += val.product.product_cost * val.quantity),
+        0
+    );
     const totalCost = productCost + s.cost;
     const addresses = [
         values.address1,
@@ -48,13 +55,18 @@ export default function Review() {
             </Typography>
             <List disablePadding>
                 {products.map((product) => (
-                    <ListItem className={classes.listItem} key={product.name}>
+                    <ListItem
+                        className={classes.listItem}
+                        key={product.product.name}
+                    >
                         <ListItemText
-                            primary={product.name}
-                            secondary={product.desc}
+                            primary={product.product.name}
+                            secondary={`Rozmiar: ${product.size}, ilość: ${product.quantity}`}
                         />
                         <Typography variant="body2">
-                            {priceToPLN(product.price)}
+                            {priceToPLN(
+                                parseFloat(product.product.product_cost)
+                            )}
                         </Typography>
                     </ListItem>
                 ))}

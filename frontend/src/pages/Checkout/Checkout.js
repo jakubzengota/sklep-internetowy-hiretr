@@ -72,12 +72,12 @@ const validationSchema = [
             .max(50, "Too Long!")
             .required("Required"),
     }),
-    yup.object().shape({
-        shipping: yup.string().required("Required"),
-    }),
-    yup.object().shape({
-        payment: yup.string().required("Required"),
-    }),
+    // yup.object().shape({
+    //     shipping: yup.string().required("Required"),
+    // }),
+    // yup.object().shape({
+    //     payment: yup.string().required("Required"),
+    // }),
 ];
 
 const initialValues = {
@@ -90,9 +90,9 @@ const initialValues = {
     state: "",
     zip: "",
     country: "",
-    shipping: "Dostawa kurierem",
+    // shipping: "Dostawa kurierem",
     payment: "Szybkie płatności",
-    shippingId: null,
+    shippingId: 1,
 };
 
 function getStepContent(step) {
@@ -131,14 +131,19 @@ export default function Checkout() {
                         address: {
                             street: values.address1,
                             city: values.city,
-                            postalCode: values.zip,
+                            postCode: values.zip,
                         },
                         customer: {
                             firstName: values.firstName,
                             lastName: values.lastName,
                             email: values.email,
                         },
-                        price_pln: 50,
+                        price_pln: products.reduce(
+                            (acc, val) =>
+                                (acc +=
+                                    val.product.product_cost * val.quantity),
+                            20
+                        ),
                     }),
                 });
                 actions.setSubmitting(false);
