@@ -59,7 +59,7 @@ export default function PaymentForm() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Order summary
+                Podsuowanie zamówienia
             </Typography>
             <List disablePadding>
                 {payment.map((value) => (
@@ -67,7 +67,7 @@ export default function PaymentForm() {
                 ))}
             </List>
             <Typography variant="h6" gutterBottom>
-                Payment method
+                Metoda płatności
             </Typography>
             <List>
                 {shipping.map((s) => (

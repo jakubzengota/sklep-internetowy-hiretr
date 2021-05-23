@@ -37,8 +37,7 @@ export default function Review() {
     );
     const totalCost = productCost + s.cost;
     const addresses = [
-        values.address1,
-        values.address2,
+        values.address,
         values.city,
         values.zip,
         values.country,
@@ -51,7 +50,7 @@ export default function Review() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Order summary
+                Podsumowanie zamówienia
             </Typography>
             <List disablePadding>
                 {products.map((product) => (
@@ -90,7 +89,7 @@ export default function Review() {
                         gutterBottom
                         className={classes.title}
                     >
-                        Shipping
+                        Dostawa
                     </Typography>
                     <Typography
                         gutterBottom
@@ -103,7 +102,7 @@ export default function Review() {
                         gutterBottom
                         className={classes.title}
                     >
-                        Payment details
+                        Szczegóły płatności
                     </Typography>
                     <Grid container>
                         {payments.map((payment) => (
