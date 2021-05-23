@@ -30,7 +30,7 @@ function EmailVerification() {
     }, []);
     return (
         <React.Fragment>
-            <div>confirm email</div>
+            <div>Potwierdź email</div>
         </React.Fragment>
     );
 }
