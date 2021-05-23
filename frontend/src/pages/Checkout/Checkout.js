@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const steps = ["Shipping address", "Payment details", "Review your order"];
+const steps = ["Adres dostawy", "Szczegóły płatności", "Podsumowanie"];
 
 const validationSchema = [
     yup.object().shape({
@@ -178,13 +178,10 @@ export default function Checkout() {
                         {activeStep === steps.length ? (
                             <React.Fragment>
                                 <Typography variant="h5" gutterBottom>
-                                    Thank you for your order.
+                                    Dziękujemy za zamówienie.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Your order number is #2001539. We have
-                                    emailed your order confirmation, and will
-                                    send you an update when your order has
-                                    shipped.
+                                    Twój numer zamówienia to #2001539. Wysłaliśmy mail z potwierdzeniem na podany adres.
                                 </Typography>
                             </React.Fragment>
                         ) : (
