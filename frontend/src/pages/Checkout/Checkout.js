@@ -185,9 +185,6 @@ export default function Checkout() {
                                     Wysłaliśmy mail z potwierdzeniem na podany
                                     adres.                                    
                                 </Typography>
-                                <Typography variant="subtitle1">
-                                    Prosimy o wysłanie przelewu na adres PL 98114011243630010353035239.
-                                </Typography>
                             </React.Fragment>
                         ) : (
                             <Formik
