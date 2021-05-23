@@ -37,8 +37,7 @@ export default function Review() {
     );
     const totalCost = productCost + s.cost;
     const addresses = [
-        values.address1,
-        values.address2,
+        values.address,
         values.city,
         values.zip,
         values.country,
