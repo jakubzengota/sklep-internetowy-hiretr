@@ -91,7 +91,7 @@ const initialValues = {
     zip: "",
     country: "",
     // shipping: "Dostawa kurierem",
-    payment: "Szybkie płatności",
+    payment: "Przelew tradycyjny",
     shippingId: 1,
 };
 
@@ -183,7 +183,10 @@ export default function Checkout() {
                                 <Typography variant="subtitle1">
                                     Twój numer zamówienia to #2001539.
                                     Wysłaliśmy mail z potwierdzeniem na podany
-                                    adres.
+                                    adres.                                    
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                    Prosimy o wysłanie przelewu na adres PL 98114011243630010353035239.
                                 </Typography>
                             </React.Fragment>
                         ) : (

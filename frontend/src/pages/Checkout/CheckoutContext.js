@@ -15,7 +15,7 @@ const initialState = {
             cost: 20.0,
         },
     ],
-    payment: ["Szybkie płatności"],
+    payment: ["Przelew tradycyjny"],
 };
 
 export default React.createContext(initialState);
