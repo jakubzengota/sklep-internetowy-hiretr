@@ -19,27 +19,29 @@ const useStyles = makeStyles((theme) => ({
 
 function Cart() {
     const classes = useStyles();
-
+    const { itemIds } = useSelector((state) => state.cart);
     const sum = useSelector((state) =>
-        (
-            state.cart.itemIds.reduce(
+        state.cart.itemIds
+            .reduce(
                 (acc, id) =>
                     state.cart.itemsById[id].product.product_cost *
                         state.cart.itemsById[id].quantity +
                     acc,
                 0
             )
-        ).toFixed(2)
+            .toFixed(2)
     );
     return (
         <React.Fragment>
             <div
                 style={{
-                    backgroundImage:"url(" + "https://i.imgur.com/6XhoraV.png" + ")",
+                    backgroundImage:
+                        "url(" + "https://i.imgur.com/6XhoraV.png" + ")",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
-                }}>
+                }}
+            >
                 <br></br>
             </div>
             <div style={{ margin: "auto", width: "60%", fontFamily: "Cinzel" }}>
@@ -53,16 +55,23 @@ function Cart() {
                             <Paper variant="outlined" style={{ padding: "2%" }}>
                                 <span
                                     style={{ fontSize: "20px" }}
-                                >{`Suma: ${sum.replace(".",",")} PLN`}</span>
+                                >{`Suma: ${sum.replace(".", ",")} PLN`}</span>
                                 <br></br>
                                 <Link
                                     to={"/checkout"}
-                                    style={{ textDecoration: "none" }}
+                                    style={{
+                                        textDecoration: "none",
+                                        pointerEvents:
+                                            itemIds.length === 0
+                                                ? "none"
+                                                : "auto",
+                                    }}
                                 >
                                     <Button
                                         variant="outlined"
                                         size="small"
                                         fullWidth
+                                        disabled={itemIds.length === 0}
                                     >
                                         Zamawiam
                                     </Button>
@@ -72,7 +81,8 @@ function Cart() {
                                     style={{
                                         fontFamily: "Open Sans Condensed",
                                         fontSize: "20px",
-                                    }}>
+                                    }}
+                                >
                                     <p style={{ textAlign: "center" }}>
                                         30 dni na zwrot
                                     </p>
