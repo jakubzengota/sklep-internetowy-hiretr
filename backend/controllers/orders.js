@@ -352,11 +352,11 @@ a[x-apple-data-detectors] {
                  <tr style="border-collapse:collapse"> 
                   <td valign="top" align="center" style="padding:0;Margin:0;width:540px"> 
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
-                     <tr style="border-collapse:collapse"> 
+                    <tr style="border-collapse:collapse"> 
                       <td align="right" style="padding:0;Margin:0"><span style="color:#19857B"></span> 
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="right" role="presentation"> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Suma:</td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Kwota:</td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">${
                               price - 20 + " zł"
                           }</td> 
@@ -370,12 +370,17 @@ a[x-apple-data-detectors] {
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">0.00 zł</td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><strong>Podsumowanie:</strong></td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><strong>Suma:</strong></td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#19857B"><strong>${
                               price + " zł"
                           }</strong></td> 
-                          <td>Prosimy o wysłanie przelewu na adres PL 98114011243630010353035239.</td>
                          </tr> 
+                         </tr> 
+                         <br><br>
+                         <tr style="border-collapse:collapse"> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Prosimy o wysłanie kwoty przelewem na numer <strong>PL 98114011243630010353035239.</strong></td> 
+                         </tr> 
+                         
                        </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF;font-size:14px"><br></p></td> 
                      </tr> 
                    </table></td> 
