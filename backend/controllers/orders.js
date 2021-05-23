@@ -139,10 +139,10 @@ a[x-apple-data-detectors] {
                   <td valign="top" align="center" style="padding:0;Margin:0;width:560px"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:0px" width="100%" cellspacing="0" cellpadding="0" role="presentation"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:15px"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#FFFFFF">Thanks for your order</h1></td> 
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:15px"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#FFFFFF">Dziękujemy za zamówienie</h1></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="center" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF;font-size:14px">You'll receive an email when your items are shipped. If you have any questions, Call us 1-800-1234-5678.</p></td> 
+                      <td align="center" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF;font-size:14px">Otrzymasz wiadomość e-mail, kiedy Twoje zamówienie zostanie wysłane.</p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -163,17 +163,17 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:280px"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;background-color:#FFFFFF;border-color:#EFEFEF;border-width:1px 0px 1px 1px;border-style:solid" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff" role="presentation"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">SUMMARY:</h4></td> 
+                      <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">PODSUMOWANIE:</h4></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="left" style="padding:0;Margin:0;padding-bottom:20px;padding-left:20px;padding-right:20px"> 
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation"> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0"><span style="font-size:14px;line-height:21px">Order #:</span></td> 
+                          <td style="padding:0;Margin:0"><span style="font-size:14px;line-height:21px">Numer zamówienia #:</span></td> 
                           <td style="padding:0;Margin:0"><span style="font-size:14px;line-height:21px">945645546</span></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0"><span style="font-size:14px;line-height:21px">Order Total:</span></td> 
+                          <td style="padding:0;Margin:0"><span style="font-size:14px;line-height:21px">Suma:</span></td> 
                           <td style="padding:0;Margin:0"><span style="font-size:14px;line-height:21px">${
                               price + " zł"
                           }</span></td> 
@@ -189,7 +189,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:280px"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;background-color:#FFFFFF;border-width:1px;border-style:solid;border-color:#EFEFEF" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff" role="presentation"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">SHIPPING ADDRESS:</h4></td> 
+                      <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">Adres:</h4></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="left" style="padding:0;Margin:0;padding-bottom:20px;padding-left:20px;padding-right:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">${
@@ -222,7 +222,7 @@ a[x-apple-data-detectors] {
                   <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:270px"> 
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
-                      <td align="left" style="padding:0;Margin:0;padding-left:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">ITEMS ORDERED</h4></td> 
+                      <td align="left" style="padding:0;Margin:0;padding-left:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">Zamówienie</h4></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -236,9 +236,9 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:0;Margin:0"> 
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" role="presentation"> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0"><span style="font-size:13px">NAME</span></td> 
-                          <td style="padding:0;Margin:0;width:60px;text-align:center"><span style="font-size:13px"><span style="line-height:100%">QTY</span></span></td> 
-                          <td style="padding:0;Margin:0;width:100px;text-align:center"><span style="font-size:13px"><span style="line-height:100%">PRICE</span></span></td> 
+                          <td style="padding:0;Margin:0"><span style="font-size:13px">Nazwa</span></td> 
+                          <td style="padding:0;Margin:0;width:60px;text-align:center"><span style="font-size:13px"><span style="line-height:100%">Ilość</span></span></td> 
+                          <td style="padding:0;Margin:0;width:100px;text-align:center"><span style="font-size:13px"><span style="line-height:100%">Cena</span></span></td> 
                          </tr> 
                        </table></td> 
                      </tr> 
@@ -356,24 +356,25 @@ a[x-apple-data-detectors] {
                       <td align="right" style="padding:0;Margin:0"><span style="color:#19857B"></span> 
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="right" role="presentation"> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Subtotal :</td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Suma:</td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">${
                               price - 20 + " zł"
                           }</td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Flat-rate Shipping:</td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Dostawa:</td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#008080"><strong>20 zł</strong></td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Discount:</td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">Zniżka:</td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px">0.00 zł</td> 
                          </tr> 
                          <tr style="border-collapse:collapse"> 
-                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><strong>Order Total:</strong></td> 
+                          <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px"><strong>Podsumowanie:</strong></td> 
                           <td style="padding:0;Margin:0;text-align:right;font-size:18px;line-height:27px;color:#19857B"><strong>${
                               price + " zł"
                           }</strong></td> 
+                          <td>Prosimy o wysłanie przelewu na adres PL 98114011243630010353035239.</td>
                          </tr> 
                        </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#FFFFFF;font-size:14px"><br></p></td> 
                      </tr> 
