@@ -201,7 +201,7 @@ export default function Checkout() {
                                                     onClick={handleBack}
                                                     className={classes.button}
                                                 >
-                                                    Back
+                                                    Wróć
                                                 </Button>
                                             )}
                                             <LoadingButton

@@ -110,26 +110,7 @@ function Catalog() {
                         style={{ backgroundColor: "white", height: "40px" }}
                     >
                         <Toolbar variant="dense">
-                            <Typography
-                                style={{
-                                    color: "black",
-                                    fontSize: "15px",
-                                    fontFamily: "Cinzel",
-                                    fontWeight: 800,
-                                }}
-                            >
-                                Sortuj
-                                <ExpandMoreIcon
-                                    ref={anchorRef}
-                                    aria-controls={
-                                        state.open
-                                            ? "menu-list-grow"
-                                            : undefined
-                                    }
-                                    aria-haspopup="true"
-                                    onClick={handleToggle}
-                                ></ExpandMoreIcon>
-                            </Typography>
+                            
                             <Popper
                                 open={state.open}
                                 anchorEl={anchorRef.current}
