@@ -76,7 +76,6 @@ function Cart() {
                                         Zamawiam
                                     </Button>
                                 </Link>
-                                <hr></hr>
                                 <div
                                     style={{
                                         fontFamily: "Open Sans Condensed",

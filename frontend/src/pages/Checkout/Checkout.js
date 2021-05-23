@@ -91,7 +91,7 @@ const initialValues = {
     zip: "",
     country: "",
     // shipping: "Dostawa kurierem",
-    payment: "Szybkie płatności",
+    payment: "Przelew tradycyjny",
     shippingId: 1,
 };
 
@@ -183,7 +183,7 @@ export default function Checkout() {
                                 <Typography variant="subtitle1">
                                     Twój numer zamówienia to #2001539.
                                     Wysłaliśmy mail z potwierdzeniem na podany
-                                    adres.
+                                    adres wraz z informacjami do przelewu.                                
                                 </Typography>
                             </React.Fragment>
                         ) : (
@@ -201,7 +201,7 @@ export default function Checkout() {
                                                     onClick={handleBack}
                                                     className={classes.button}
                                                 >
-                                                    Back
+                                                    Wróć
                                                 </Button>
                                             )}
                                             <LoadingButton
@@ -219,8 +219,8 @@ export default function Checkout() {
                                                 type="submit"
                                             >
                                                 {activeStep === steps.length - 1
-                                                    ? "Place order"
-                                                    : "Next"}
+                                                    ? "Złóż zamówienie"
+                                                    : "Dalej"}
                                             </LoadingButton>
                                         </div>
                                     </Form>
