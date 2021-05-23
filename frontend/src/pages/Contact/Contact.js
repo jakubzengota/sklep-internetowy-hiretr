@@ -38,7 +38,7 @@ function Contact() {
                 <div>                
                     <Grid container spacing={3}>
                         <Grid item xs={8}>
-                            <div id="mapid" style={{height: '200px'}}>
+                            <div id="mapid" style={{height: '50%'}}>
                                 <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
                                     <TileLayer
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -52,37 +52,38 @@ function Contact() {
                                 </MapContainer>
                             </div>
                         </Grid>
-                        <Grid item xs={4}>
-                            <Paper variant="outlined" style={{ padding: "4%", height: 430 }}>                                
-                                <div
-                                    style={{
-                                        fontFamily: "Open Sans Condensed",
-                                        fontSize: "20px",
-                                    }}
-                                >
-                                    <p style={{ fontFamily: "Cinzel", fontSize: "15px" }}>
-                                    Dane odbiorcy:
-                                    </p>
-                                    Hiretr sp. z o.o. <br></br>
-                                    ul. Koszulkowa 23, <br></br>
-                                    34-078 Koszulkowo
-                                    
-                                    <p style={{ fontFamily: "Cinzel", fontSize: "15px" }}>
-                                    Telefon kontaktowy:
-                                    </p>
-                                    598 584 324
+                        <Grid item xs={4}>                         
+                            <div
+                                style={{
+                                    fontFamily: "Open Sans Condensed",
+                                    fontSize: "17px",
+                                    padding: "4%", 
+                                    height: '100%',
+                                    flexWrap: 'wrap'
+                                }}
+                            >
+                                <p>
+                                Dane odbiorcy:
+                                </p>
+                                Hiretr sp. z o.o. <br></br>
+                                ul. Koszulkowa 23, <br></br>
+                                34-078 Koszulkowo
+                                
+                                <p >
+                                Telefon kontaktowy:
+                                </p>
+                                598 584 324
 
-                                    <p style={{ fontFamily: "Cinzel", fontSize: "15px" }}>
-                                    E-mail:
-                                    </p>
-                                    kontakt@koszulkowo.pl
-                                    
-                                    <p style={{ fontFamily: "Cinzel", fontSize: "15px" }}>
-                                    Numer rachunku:
-                                    </p>
-                                    PL 98114011243630010353035239
-                                </div>
-                            </Paper>
+                                <p>
+                                E-mail:
+                                </p>
+                                kontakt@koszulkowo.pl
+                                
+                                <p>
+                                Numer rachunku:
+                                </p>
+                                PL 98114011243630010353035239
+                            </div>
                         </Grid>
                     </Grid>
                 </div>
