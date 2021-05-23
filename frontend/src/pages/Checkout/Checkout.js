@@ -84,8 +84,8 @@ const initialValues = {
     firstName: "",
     lastName: "",
     email: "",
-    address1: "",
-    address2: "",
+    address: "",
+    // address2: "",
     city: "",
     state: "",
     zip: "",
@@ -129,7 +129,7 @@ export default function Checkout() {
                     body: JSON.stringify({
                         products,
                         address: {
-                            street: values.address1,
+                            street: values.address,
                             city: values.city,
                             postCode: values.zip,
                         },
@@ -181,7 +181,9 @@ export default function Checkout() {
                                     Dziękujemy za zamówienie.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Twój numer zamówienia to #2001539. Wysłaliśmy mail z potwierdzeniem na podany adres.
+                                    Twój numer zamówienia to #2001539.
+                                    Wysłaliśmy mail z potwierdzeniem na podany
+                                    adres.
                                 </Typography>
                             </React.Fragment>
                         ) : (
